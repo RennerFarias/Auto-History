@@ -1,0 +1,96 @@
+body {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 1rem;
+    min-height: 100vh;
+}
+
+.cont-principal {
+    width: 100%;
+    margin: 4rem auto 0;
+    background-color: rgba(255, 255, 255, 0.7); 
+    backdrop-filter: blur(12px); 
+    padding: 2.5rem ;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+}
+
+.inicio {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.inicio h1 {
+    color: #355c4b;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+.inicio p {
+    color: #2f2f2f;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.gaveta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.8); 
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gaveta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); 
+}
+
+.gaveta-botao {
+    display: inline-block;
+    padding: 20px;
+    background-color: #355c4b;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.listagem {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.gaveta-conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #2f2f2f;
+    font-size: 16px;
+    line-height: 1.6;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, opacity 0.25s ease, margin-top 0.25s ease;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.gaveta-conteudo.ativo {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 16px;
+    padding-top: 16px;
+}
+
+.gaveta-conteudo p {
+    margin: 3px 0;
+}

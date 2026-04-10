@@ -1,18 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oficinas parceiras</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/paginas/oficinasStyle.css">
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 <body>
+    <div id="menu"></div>
+
+    <div class="cont-principal">
+        
+        <div class="inicio">
+            <h1>Oficinas parceiras</h1>
+            <p>Oferecemos uma rede de oficinas confiáveis e qualificadas para cuidar do seu carro. Encontre a oficina mais próxima de você e agende seu serviço com facilidade.</p>
+        </div>
+        
+        <div id="lista-oficinas"></div>
+      
+    </div>
 
 
-    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel" src="js/paginas/oficina.js"></script>
+    <script type="text/babel" src="js/baseDoSistema/storage.js"></script>
     
 </body>
 </html>
