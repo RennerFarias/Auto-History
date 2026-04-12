@@ -10,7 +10,7 @@ rootMenu.render(
                 <a href="index.html#funcionalidades">Recursos</a>
                 <a href="index.html#comofunciona">Etapas</a>
                 <a href="oficina.html">Oficinas Parceiras</a>  
-                <button id="abrir-login">Entrar</button>
+                <a href="dashboard.html" id="abrir-login">Entrar</a>
             </nav>
         </header>
     </>
