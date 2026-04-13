@@ -162,7 +162,7 @@ function TelaUsuario({ onLogout }) {
                 i === editandoIndex ? form : v
             );
         } else {
-            listaAtualizada = [...veiculos, form];
+            listaAtualizada = [...veiculos, { ...form, historico: [] }];
         }
 
         setVeiculos(listaAtualizada);
@@ -271,12 +271,13 @@ function TelaUsuario({ onLogout }) {
                 ) : (
                     veiculos.map((v, index) => (
                         <div className="card" key={index}>
-                            <h3>{v.modelo} - {v.marca}</h3>
-
+                            <a href={`veiculo.html?id=${index}`}>
+                            <h3> {v.modelo} - {v.marca}</h3>
+                            
                             <p><strong>Placa:</strong> {v.placa}</p>
                             <p><strong>Cor:</strong> {v.cor}</p>
                             <p><strong>Ano:</strong> {v.ano}</p>
-                            <p><strong>KM:</strong> {v.km}</p>
+                            <p><strong>KM:</strong> {v.km}</p></a>
 
                             <div className="acoes-card">
                                 <button
