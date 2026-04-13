@@ -274,3 +274,13 @@ button:hover {
     color: #fff;
     cursor: pointer;
 }
+
+.btn-pdf {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #1a3a6b;
+    color: #fff;
+    cursor: pointer;
+}

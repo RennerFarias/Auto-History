@@ -293,6 +293,14 @@ function TelaUsuario({ onLogout }) {
                                 >
                                     Excluir
                                 </button>
+
+                                 <button
+                                    className="btn-pdf"
+                                    onClick={() => gerarPDF(v)}
+                                >
+                                    PDF
+                                </button>
+
                             </div>
                         </div>
                     ))
