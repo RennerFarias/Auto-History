@@ -88,24 +88,6 @@
     cursor: pointer;
 }
 
-.btn-voltar {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-
-    padding: 10px 16px;
-    border-radius: 8px;
-    border: none;
-
-    background: #355c4b;
-    color: #fff;
-
-    font-weight: bold;
-    cursor: pointer;
-
-    z-index: 100;
-}
-
 a {
     text-decoration: none;
     color: black;

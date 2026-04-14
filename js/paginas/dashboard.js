@@ -70,13 +70,6 @@ function TelaLogin({ onLogin }) {
     return (
         <div className="login-container">
 
-            <button
-                className="btn-voltar"
-                onClick={() => window.location.href = "index.html"}
-            >
-                ← Voltar
-            </button>
-
             <div className="login-card">
                 <h1>{modoCadastro ? "Cadastro" : "Entrar"}</h1>
 
