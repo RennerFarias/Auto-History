@@ -3,17 +3,18 @@ body {
     flex-direction: column;
     padding: 3rem 1rem;
     min-height: 100vh;
+    
 }
 
 .cont-principal {
     width: 100%;
-    margin: 4rem auto 0;
+    margin: 7rem auto;
     background-color: rgba(255, 255, 255, 0.7); 
     backdrop-filter: blur(12px); 
     padding: 2.5rem ;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.15); 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); background: linear-gradient(180deg, #f5f4ef 0%, #ece8dd 100%);
 }
 
 .inicio {
@@ -34,14 +35,17 @@ body {
 
 .gaveta {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
     gap: 20px;
-    justify-content: center;
     background-color: rgba(255, 255, 255, 0.8); 
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 520px;
+    background-color: #355c4b;
 }
 
 .gaveta:hover {
@@ -50,18 +54,45 @@ body {
 }
 
 .gaveta-botao {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    min-height: 180px;
     padding: 20px;
-    background-color: #355c4b;
-    color: #fff;
+    color: #000;
     text-decoration: none;
     border-radius: 15px;
+    border: none;
+    text-align: left;
     transition: background-color 0.3s ease;
+    background: linear-gradient(90deg, #d4af37, #ff8c00);
 }
+
+.gaveta-botao:hover {
+    background: linear-gradient(90deg, #ff8c00, #d4af37);
+}
+
+.gaveta-titulo {
+    color: #000;
+    font-size: 24px;
+    margin: 0px;
+    display: block;
+    font-weight: normal;
+}
+
+.gaveta-descricao {
+    color: #2f2f2f;
+    font-size: 16px;
+    line-height: 1.4;
+    margin-top: 10px;
+    font-weight: normal;
+}
+
 
 .listagem {
     list-style: none;
-    padding: 0;
+    padding: 0px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -73,7 +104,7 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    color: #2f2f2f;
+    color: #fff;
     font-size: 16px;
     line-height: 1.6;
     max-height: 0;
@@ -82,6 +113,7 @@ body {
     transition: max-height 0.35s ease, opacity 0.25s ease, margin-top 0.25s ease;
     margin-top: 0;
     padding-top: 0;
+    width: 100%;
 }
 
 .gaveta-conteudo.ativo {

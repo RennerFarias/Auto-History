@@ -38,8 +38,8 @@ function ItemGaveta({ dados }) {
         <li>
             <div className="gaveta">
                 <button className="gaveta-botao" onClick={() => setAberta(!aberta)}>
-                    <h2>{dados.nome}</h2>
-                    <p>{dados.descricao}</p>
+                    <span className="gaveta-titulo">{dados.nome}</span>
+                    <span className="gaveta-descricao">{dados.descricao}</span>
                 </button>
 
                 <div className={`gaveta-conteudo ${aberta ? 'ativo' : ''}`}>
