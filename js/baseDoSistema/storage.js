@@ -37,6 +37,7 @@ function Menu() {
                 <a href="index.html#funcionalidades">Recursos</a>
                 <a href="index.html#comofunciona">Etapas</a>
                 <a href="oficina.html">Oficinas Parceiras</a>
+                <a href="sobreNos.html">Sobre nós</a>
                 <a href="dashboard.html" id="abrir-login">Entrar</a>
             </nav>
         </header>
