@@ -61,6 +61,11 @@
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
 }
 
+.numero-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
 .numero-item h3 {
     color: #355c4b;
     font-size: 20px;
