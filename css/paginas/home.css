@@ -169,14 +169,6 @@
         align-items: center;
     }
 
-    .botao-principal,
-    .botao-secundario {
-        width: 100%;
-        max-width: 260px;
-        text-align: center;
-    }
-
-
     .numeros {
         flex-direction: column;
         align-items: center;
