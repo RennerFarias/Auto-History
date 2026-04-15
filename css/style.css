@@ -31,10 +31,10 @@ body {
 .logo {
     font-weight: bold;
     color: #2b2b2b;
-    padding: 10px 16px;
-    border-radius: 8px;
+    padding: 0;
+    border-radius: 0;
     border: none;
-    background: #355c4bda;
+    background: transparent;
     cursor: pointer;
 }
 
@@ -80,4 +80,29 @@ body {
     display: flex;
     flex-direction: column;
     margin: 10px;
+}
+
+
+@media (max-width: 768px) {
+    .cabecalho {
+        padding: 10px 12px;
+    }
+
+    .logo img {
+        height: 2.5rem;
+    }
+
+    .menu {
+        width: auto;
+        gap: 10px;
+    }
+
+    .menu a {
+        font-size: 13px;
+    }
+
+    #abrir-login {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
 }
