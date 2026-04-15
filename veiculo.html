@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auto History - Veiculo</title>
     <link rel="stylesheet" href="css/style.css">
-    
+    <link rel="stylesheet" href="css/paginas/veiculo.css">
 </head>
 <body>
-    <div>
+    <div id="pagina-veiculo">
         <div id="menu"></div>
 
         <div id="geral">
             <div id="container-1">
-                <a href="dashboard.html" type="button">Meus veículos</a>
+                <button onclick="voltar()">Meus veículos</button>
             </div>
 
             <div id="detalhes-veiculo">
@@ -21,6 +21,22 @@
             </div>
 
             <div id="botoes">
+                <div id="modal" class="modal hidden">
+                    <div class="modal-content">
+                        <h3>Nova Manutenção</h3>
+
+                        <input id="tipo" placeholder="Tipo (Preventiva, Corretiva...)" />
+                        <input id="km" placeholder="Quilometragem" />
+                        <input id="local" placeholder="Oficina" />
+                        <input id="data" type="date" />
+                        <input id="descricao" placeholder="Descrição" />
+
+                        <div class="acoes-modal">
+                            <button onclick="fecharModal()">Cancelar</button>
+                            <button onclick="salvarManutencao()">Salvar</button>
+                        </div>
+                    </div>
+                </div>
 
             </div>
 

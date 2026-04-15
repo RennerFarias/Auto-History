@@ -1,5 +1,7 @@
 function App() {
-    const [logado, setLogado] = React.useState(false);
+    const [logado, setLogado] = React.useState(
+    !!localStorage.getItem("usuario")
+);
 
     return (
         <>
@@ -152,7 +154,7 @@ function TelaUsuario({ onLogout }) {
 
         if (editandoIndex !== null) {
             listaAtualizada = veiculos.map((v, i) =>
-                i === editandoIndex ? form : v
+                i === editandoIndex ? { ...form, historico: v.historico || [] } : v
             );
         } else {
             listaAtualizada = [...veiculos, { ...form, historico: [] }];

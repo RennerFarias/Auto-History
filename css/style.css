@@ -76,12 +76,6 @@ body {
     background: #2b4a3c;
 }
 
-.geral {
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-}
-
 
 @media (max-width: 768px) {
     .cabecalho {
