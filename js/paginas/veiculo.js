@@ -38,7 +38,7 @@ const botoes = document.getElementById("botoes");
 
 botoes.innerHTML = `
     <button onclick="registrar()">+ Registrar Manutenção</button>
-    <button>Gerar PDF</button>
+    <button onclick="gerarPDF(veiculo)">Gerar PDF</button>
 `;
 
 function renderizar() {
@@ -78,7 +78,7 @@ function registrar() {
 
     salvar();
     renderizar();
-}
+
 
 function remover(idManutencao) {
     veiculo.historico = veiculo.historico.filter(

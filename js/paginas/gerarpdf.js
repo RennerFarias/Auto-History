@@ -1,10 +1,22 @@
 function gerarPDF(veiculo) {
+    if (!window.jspdf) {
+        alert("Erro: biblioteca jsPDF não carregada. Verifique sua conexão com a internet.");
+        return;
+    }
+
+    if (!veiculo) {
+        alert("Erro: nenhum veículo encontrado.");
+        return;
+    }
+
+    try {
+
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
     const W = doc.internal.pageSize.getWidth();
 
-    // ── CORES
+    // ── Paleta 
     const AZUL      = [18, 52, 120];
     const AZUL_LIG  = [235, 241, 255];
     const CINZA_ESC = [45, 45, 45];
@@ -13,7 +25,7 @@ function gerarPDF(veiculo) {
     const BRANCO    = [255, 255, 255];
     const VERDE     = [30, 140, 80];
 
-    // ── Cabeçalho 
+    // ── Cabeçalho azul 
     doc.setFillColor(...AZUL);
     doc.rect(0, 0, W, 42, "F");
 
@@ -29,8 +41,10 @@ function gerarPDF(veiculo) {
     const horaFormatada = agora.toLocaleTimeString("pt-BR");
     doc.text(`Gerado em ${dataFormatada} às ${horaFormatada}`, 14, 28);
 
-    
-    // ── Bloco de dados do veículo
+    const score = veiculo.score !== undefined ? veiculo.score : 0;
+    doc.text(`Score do proprietário: ${Number(score).toFixed(1)} / 5.0`, 14, 36);
+
+    // ── Bloco de dados do veículo 
     let y = 52;
 
     doc.setFillColor(...AZUL_LIG);
@@ -88,7 +102,7 @@ function gerarPDF(veiculo) {
             h.tipo        || "—",
             h.descricao   || "—",
             h.km          ? `${Number(h.km).toLocaleString("pt-BR")} km` : "—",
-            h.oficina     || "—",
+            h.oficina || h.local || "—",
             h.verificado  ? "Sim" : "Não",
             h.anexos      || "—"
           ])
@@ -153,4 +167,9 @@ function gerarPDF(veiculo) {
     // ── Salvar 
     const nomeArquivo = `prontuario_${(veiculo.placa || "veiculo").replace(/\s/g, "_").toLowerCase()}.pdf`;
     doc.save(nomeArquivo);
+
+    } catch (erro) {
+        console.error("Erro ao gerar PDF:", erro);
+        alert("Erro ao gerar PDF: " + erro.message);
+    }
 }
