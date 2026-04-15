@@ -182,7 +182,7 @@ function TelaUsuario({ onLogout }) {
         setEditandoIndex(index);
     }
 
-    // ✅ CONFIRMAÇÃO AQUI
+    //  CONFIRMAÇÃO AQUI
     function excluirVeiculo(index) {
         const confirmar = confirm("Tem certeza que deseja excluir este veículo?");
 
