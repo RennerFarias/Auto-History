@@ -23,17 +23,18 @@
             <div id="botoes">
                 <div id="modal" class="modal hidden">
                     <div class="modal-content">
-                        <h3>Nova Manutenção</h3>
+                        <form onsubmit="salvarManutencao(event)">
+                            <input id="tipo" placeholder="Tipo" />
+                            <input id="km" placeholder="Quilometragem" />
+                            <input id="local" placeholder="Oficina" />
+                            <input id="data" type="date" />
+                            <input id="descricao" placeholder="Descrição" />
 
-                        <input id="tipo" placeholder="Tipo (Preventiva, Corretiva...)" />
-                        <input id="km" placeholder="Quilometragem" />
-                        <input id="local" placeholder="Oficina" />
-                        <input id="data" type="date" />
-                        <input id="descricao" placeholder="Descrição" />
-
-                        <div class="acoes-modal">
-                            <button onclick="fecharModal()">Cancelar</button>
-                            <button onclick="salvarManutencao()">Salvar</button>
+                            <div class="acoes-modal">
+                                <button type="button" onclick="fecharModal()">Cancelar</button>
+                                <button type="submit">Salvar</button>
+                            </div>
+                        </form>
                         </div>
                     </div>
                 </div>

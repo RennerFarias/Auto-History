@@ -63,15 +63,8 @@ function renderizar() {
 }
 
 function registrar() {
-    const descricao = prompt("Descrição da manutenção:");
-    const data = prompt("Data:");
-    const km = prompt("KM:");
-    const local = prompt("Local:");
-
-    if (!descricao || !data) {
-        alert("Preencha os campos obrigatórios!");
-        return;
-    }
+    abrirModal();
+}
 
     const nova = {
         id: Date.now(),
@@ -110,4 +103,47 @@ function voltar() {
     } else {
         window.location.href = "dashboard.html";
     }
+}
+
+function abrirModal() {
+    document.getElementById("modal").classList.remove("hidden");
+}
+
+function fecharModal() {
+    document.getElementById("modal").classList.add("hidden");
+}
+
+function salvarManutencao(event) {
+    event.preventDefault();
+
+    const tipo = document.getElementById("tipo").value;
+    const km = document.getElementById("km").value;
+    const local = document.getElementById("local").value;
+    const data = document.getElementById("data").value;
+    const descricao = document.getElementById("descricao").value;
+
+    if (!tipo || !data) {
+        alert("Preencha os campos obrigatórios!");
+        return;
+    }
+
+    const nova = {
+        id: Date.now(),
+        descricao: tipo,
+        data,
+        km,
+        local
+    };
+
+    veiculo.historico.push(nova);
+
+    salvar(); 
+    renderizar(); 
+    fecharModal();  
+
+    document.getElementById("tipo").value = "";
+    document.getElementById("km").value = "";
+    document.getElementById("local").value = "";
+    document.getElementById("data").value = "";
+    document.getElementById("descricao").value = "";
 }
