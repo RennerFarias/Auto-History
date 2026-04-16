@@ -1,7 +1,18 @@
 function App() {
+    const params = new URLSearchParams(window.location.search);
+    const veioDoLogin = params.get("login");
+
+    const usuarioSalvo = localStorage.getItem("usuario");
+
     const [logado, setLogado] = React.useState(
-    !!localStorage.getItem("usuario")
-);
+        usuarioSalvo && !veioDoLogin
+    );
+
+    React.useEffect(() => {
+        if (usuarioSalvo && document.referrer.includes("dashboard")) {
+            setLogado(true);
+        }
+    }, []);
 
     return (
         <>

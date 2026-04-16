@@ -36,12 +36,31 @@ detalhes.innerHTML = `
 
 const botoes = document.getElementById("botoes");
 
-botoes.innerHTML = `
-    <button onclick="registrar()">+ Registrar Manutenção</button>
-    <button onclick="gerarPDF(veiculo)">Gerar PDF</button>
-`;
+function renderBotoes() {
+    const botoes = document.getElementById("botoes");
+
+    botoes.innerHTML = `
+        <button id="btn-registrar">+ Registrar Manutenção</button>
+        <button id="btn-pdf">Gerar PDF</button>
+    `;
+
+    // 🔥 AGORA O BOTÃO EXISTE
+    const btnRegistrar = document.getElementById("btn-registrar");
+    const btnPdf = document.getElementById("btn-pdf");
+
+    if (btnRegistrar) {
+        btnRegistrar.addEventListener("click", abrirModal);
+    }
+
+    if (btnPdf) {
+        btnPdf.addEventListener("click", () => {
+            alert("PDF ainda não implementado");
+        });
+    }
+}
 
 function renderizar() {
+    renderBotoes();
     const lista = document.getElementById("lista-manutencoes");
 
     lista.innerHTML = "<h3>Histórico de Manutenções</h3>";
@@ -66,19 +85,6 @@ function registrar() {
     abrirModal();
 }
 
-    const nova = {
-        id: Date.now(),
-        descricao,
-        data,
-        km,
-        local
-    };
-
-    veiculo.historico.push(nova);
-
-    salvar();
-    renderizar();
-
 
 function remover(idManutencao) {
     veiculo.historico = veiculo.historico.filter(
@@ -95,7 +101,9 @@ function salvar() {
     localStorage.setItem(chave, JSON.stringify(veiculos));
 }
 
-renderizar();
+window.onload = function () {
+    renderizar();
+};
 
 function voltar() {
     if (document.referrer.includes("dashboard")) {
@@ -127,18 +135,6 @@ function salvarManutencao(event) {
         return;
     }
 
-    const nova = {
-        id: Date.now(),
-        descricao: tipo,
-        data,
-        km,
-        local
-    };
-
-    veiculo.historico.push(nova);
-
-    salvar(); 
-    renderizar(); 
     fecharModal();  
 
     document.getElementById("tipo").value = "";
@@ -147,3 +143,7 @@ function salvarManutencao(event) {
     document.getElementById("data").value = "";
     document.getElementById("descricao").value = "";
 }
+
+window.remover = remover;
+window.salvarManutencao = salvarManutencao;
+window.fecharModal = fecharModal;
