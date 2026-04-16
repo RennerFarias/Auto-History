@@ -105,13 +105,6 @@ window.onload = function () {
     renderizar();
 };
 
-function voltar() {
-    if (document.referrer.includes("dashboard")) {
-        history.back();
-    } else {
-        window.location.href = "dashboard.html";
-    }
-}
 
 function abrirModal() {
     document.getElementById("modal").classList.remove("hidden");

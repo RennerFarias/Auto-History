@@ -12,8 +12,8 @@
 
 /* 🔹 BOTÃO VOLTAR */
 #container-1 button {
-    background: transparent;
-    color: #aaa;
+    transition: background-color 0.3s ease;
+    background: linear-gradient(90deg, #d4af37, #ff8c00);
     border: none;
     cursor: pointer;
     border-radius: 10px;
@@ -22,7 +22,7 @@
 }
 
 #container-1 button:hover {
-    background-color: #ff8c00;
+    background: linear-gradient(90deg, #ff8c00, #d4af37);
     color: #000000;
 }
 
@@ -91,33 +91,42 @@
     border: none;
     cursor: pointer;
     font-weight: 500;
+    
+    
 }
 
 /* principal */
 #botoes button:first-child {
-    transition: background-color 0.3s ease;
-    background: linear-gradient(90deg, #d4af37, #ff8c00);
+    background-image: linear-gradient(90deg, #d4af37, #ff8c00);
+    background-color: #d4af37; /* fallback para compatibilidade */
     color: black;
+    transition: background-image 0.3s ease;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
 }
 
-#botoes button:first-child :hover {
-    background: linear-gradient(90deg, #ff8c00, #d4af37);
-    color: black;
+#botoes button:first-child:hover {
+    background-image: linear-gradient(90deg, #ff8c00, #d4af37);
+}   
+
+.retornar_veiculos, :link, :visited, :active {
+    text-decoration: none;
+    color:#000000;
 }
 
 
 
 /* secundário */
 #botoes button:last-child {
-    background: transparent;
+    background-color: #355c4b;
     border: 2px solid #333333b9;
-    color: black;
+    color: rgb(255, 255, 255);
 }
 
 #botoes button:last-child:hover {
     background-color: #355c4b;
     color: rgb(255, 255, 255);
-    font-weight: bold;
 }
 
 /* 🔹 HISTÓRICO */
