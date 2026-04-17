@@ -10,7 +10,7 @@
     padding: 20px;
 }
 
-/* 🔹 BOTÃO VOLTAR */
+/* BOTÃO VOLTAR */
 #container-1 button {
     transition: background-color 0.3s ease;
     background: linear-gradient(90deg, #d4af37, #ff8c00);
@@ -26,7 +26,7 @@
     color: #000000;
 }
 
-/* 🔹 CARD BASE */
+/* CARD BASE */
 .card {
     background: #1e1e1e;
     border-radius: 12px;
@@ -34,7 +34,7 @@
     margin-bottom: 20px;
 }
 
-/* 🔹 DETALHES DO VEÍCULO */
+/* DETALHES DO VEÍCULO */
 #detalhes-veiculo {
     background: #3e3b3b1c;
     padding: 20px;
@@ -47,6 +47,173 @@
 /* título */
 #detalhes-veiculo h2 {
     margin-bottom: 5px;
+}
+
+/* Modal */
+.modal {
+    display: grid;
+    grid-template-columns: repeat(2);
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-conteudo {
+    background-color: white;
+    padding: 30px;
+    border-radius: 11px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.fechar {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.fechar:hover {
+    color: #000;
+}
+
+#form-manutencao {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    clear: both;
+    margin-top: 20px;
+}
+
+#form-manutencao input {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background-color: #fafafa;
+    box-sizing: border-box;
+}
+
+#form-manutencao input:nth-of-type(odd) {
+    grid-column: 1;
+}
+
+#form-manutencao input:nth-of-type(even) {
+    grid-column: 2;
+}
+
+#form-manutencao input:focus {
+    outline: none;
+    border-color: #ff8c00;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.1);
+}
+
+#form-manutencao textarea {
+    grid-column: 1 / -1;
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 100px;
+    transition: all 0.3s ease;
+    background-color: #fafafa;
+    box-sizing: border-box;
+}
+
+#form-manutencao textarea:focus {
+    outline: none;
+    border-color: #ff8c00;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.1);
+}
+
+#form-manutencao input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}
+
+#form-manutencao button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.btn-salvar {
+    grid-column: 1;
+    width: 100%;
+    background: linear-gradient(90deg, #ff8c00, #d4af37);
+    color: white;
+}
+
+.btn-salvar:hover {
+    background: linear-gradient(90deg, #d4af37, #ff8c00);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 140, 0, 0.3);
+}
+
+.btn-salvar:active {
+    transform: translateY(0);
+}
+
+.btn-cancelar {
+    grid-column: 2;
+    width: 100%;
+    background-color: #f0f0f0;
+    color: #333;
+    border: 2px solid #e0e0e0;
+}
+
+.btn-cancelar:hover {
+    background-color: #e0e0e0;
+    border-color: #999;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    #form-manutencao {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    #form-manutencao input:nth-of-type(odd),
+    #form-manutencao input:nth-of-type(even) {
+        grid-column: 1;
+    }
+
+    #form-manutencao textarea {
+        grid-column: 1;
+    }
+
+    .btn-salvar {
+        grid-column: 1;
+    }
+
+    .btn-cancelar {
+        grid-column: 1;
+    }
 }
 
 #detalhes-veiculo .subinfo {
@@ -78,7 +245,7 @@
     font-size: 14px;
 }
 
-/* 🔹 BOTÕES */
+/* BOTÕES */
 #botoes {
     display: flex;
     gap: 10px;
@@ -91,8 +258,6 @@
     border: none;
     cursor: pointer;
     font-weight: 500;
-    
-    
 }
 
 /* principal */
@@ -108,14 +273,7 @@
 
 #botoes button:first-child:hover {
     background-image: linear-gradient(90deg, #ff8c00, #d4af37);
-}   
-
-.retornar_veiculos, :link, :visited, :active {
-    text-decoration: none;
-    color:#000000;
 }
-
-
 
 /* secundário */
 #botoes button:last-child {
@@ -129,124 +287,107 @@
     color: rgb(255, 255, 255);
 }
 
-/* 🔹 HISTÓRICO */
-#lista-manutencoes h3 {
-    margin-bottom: 15px;
+.retornar_veiculos, :link, :visited, :active {
+    text-decoration: none;
+    color:#000000;
 }
 
-/* item */
-.historico-item {
-    background: #1e1e1e;
-    border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 10px;
+/* HISTÓRICO / LISTA DE MANUTENÇÕES */
+#lista-manutencoes {
+    margin-top: 40px;
+}
 
+#lista-manutencoes h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.manutencoes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.card-manutencao {
+    background: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.card-manutencao:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    border-color: #ff8c00;
+    transform: translateY(-4px);
+}
+
+.manutencao-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0e0e0;
 }
 
-.historico-info {
-    display: flex;
-    flex-direction: column;
+.card-manutencao h4 {
+    margin: 0;
+    color: #333;
+    font-size: 16px;
 }
 
-.historico-info strong {
-    font-size: 14px;
-}
-
-.historico-info span {
+.data-manutencao {
     font-size: 12px;
-    color: #888;
+    color: #999;
+    background-color: #f0f0f0;
+    padding: 4px 8px;
+    border-radius: 4px;
 }
 
-/* botão remover */
-.historico-item button {
-    background: transparent;
-    color: #ff4d4d;
-    border: none;
-    cursor: pointer;
+.manutencao-descricao {
+    color: #555;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    max-height: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-/* 🔹 MODAL */
-.modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.7);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.card-manutencao p {
+    margin: 8px 0;
+    font-size: 13px;
+    color: #666;
 }
 
-.hidden {
-    display: none;
+.card-manutencao strong {
+    color: #333;
 }
 
-.modal-content {
-    background: #1e1e1e;
-    padding: 25px;
-    border-radius: 12px;
-    width: 420px;
-
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.modal-content h3 {
-    margin-bottom: 10px;
-}
-
-/* grid inputs */
-.modal-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-}
-
-.modal-content input {
+.btn-deletar {
+    width: 100%;
+    margin-top: 15px;
     padding: 10px;
-    border-radius: 6px;
-    border: none;
-    background: #2a2a2a;
+    background-color: #ff6b6b;
     color: white;
-}
-
-/* campo grande */
-#descricao {
-    grid-column: span 2;
-}
-
-/* ações */
-.acoes-modal {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-}
-
-.acoes-modal button {
-    padding: 8px 14px;
-    border-radius: 6px;
     border: none;
+    border-radius: 6px;
     cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    transition: all 0.3s ease;
 }
 
-/* cancelar */
-.acoes-modal button:first-child {
-    background: #2a2a2a;
-    color: white;
+.btn-deletar:hover {
+    background-color: #ff5252;
+    box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
 }
 
-/* salvar */
-.acoes-modal button:last-child {
-    background: #2563eb;
-    color: white;
-}
-
-/* hover */
-button:hover {
-    opacity: 0.85;
+.btn-deletar:active {
+    transform: scale(0.98);
 }
 
 /* 🔹 RESPONSIVO */
@@ -264,6 +405,10 @@ button:hover {
     }
 
     .modal-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .manutencoes-grid {
         grid-template-columns: 1fr;
     }
 }

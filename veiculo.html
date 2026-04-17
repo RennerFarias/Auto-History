@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="css/paginas/veiculo.css">
 </head>
 <body>
-
         
 
     <div id="pagina-veiculo">
@@ -16,7 +15,7 @@
 
         <div id="geral">
             <div id="container-1">
-                <button><a class="retornar_veiculos" href="dashboard.html"> Meus veículos</a></button>
+                <button><a class="retornar_veiculos" href="dashboard.html">← Meus veículos</a></button>
             </div>
 
             <div id="detalhes-veiculo">
@@ -24,24 +23,7 @@
             </div>
 
             <div id="botoes">
-                <div id="modal" class="modal hidden">
-                    <div class="modal-content">
-                        <form onsubmit="salvarManutencao(event)">
-                            <input id="tipo" placeholder="Tipo" />
-                            <input id="km" placeholder="Quilometragem" />
-                            <input id="local" placeholder="Oficina" />
-                            <input id="data" type="date" />
-                            <input id="descricao" placeholder="Descrição" />
-
-                            <div class="acoes-modal">
-                                <button type="button" onclick="fecharModal()">Cancelar</button>
-                                <button type="submit">Salvar</button>
-                            </div>
-                        </form>
-                        </div>
-                    </div>
-                </div>
-
+                
             </div>
 
             <div id="lista-manutencoes">
@@ -49,6 +31,29 @@
             </div>
             
         </div>
+    </div>
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-conteudo">
+            <h2>Nova Manutenção</h2>
+            <form id="form-manutencao">
+                <input type="text" id="tipo" placeholder="Tipo de Manutenção: Óleo, Pneu, Freio" required>
+
+                <input type="number" name="quilometragem" id="quilometragem" placeholder="Quilometragem" required>
+
+                <input type="text" id="oficina" placeholder="Oficina" required>
+                
+                <input type="date" id="data" required>
+
+                <input type="number" id="custo" placeholder="Custo (opcional)" step="0.01">
+                
+                <textarea id="descricao" placeholder="Descreva a manutenção" required></textarea>
+                
+                <button type="submit" class="btn-salvar">Salvar</button>
+                <button type="button" class="btn-cancelar">Cancelar</button>
+            </form>
+        </div>
+
     </div>
     <script type="text/babel" src="js/baseDoSistema/storage.js" ></script>
     <script src="js/paginas/veiculo.js" defer></script>
