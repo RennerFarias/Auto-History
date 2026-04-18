@@ -1,9 +1,76 @@
+body {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 1rem;
+    min-height: 100vh;
+    
+}
+
+.cont-principal {
+    width: 100%;
+    margin: 7rem auto;
+    background-color: rgba(255, 255, 255, 0.7); 
+    backdrop-filter: blur(12px); 
+    padding: 2.5rem ;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); background: linear-gradient(180deg, #f5f4ef 0%, #ece8dd 100%);
+}
+
+.inicio {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.inicio h1 {
+    color: #355c4b;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+.inicio p {
+    color: #2f2f2f;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.integrantes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.gaveta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 1 1 260px;
+    max-width: 320px;
+    min-width: 240px;
+    background-color: #355c4b;
+}
+
+.gaveta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+
+
 .integrante {
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    min-height: 180px;
+    min-height: 200px;
+    height: 350px;
     padding: 20px;
     color: #000;
     text-decoration: none;
@@ -12,4 +79,36 @@
     text-align: left;
     transition: background-color 0.3s ease;
     background: linear-gradient(90deg, #d4af37, #ff8c00);
+}
+
+.integrante:hover {
+    background: linear-gradient(90deg, #ff8c00, #d4af37);
+}
+
+.integrante h2 {
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.integrante p {
+    color: #000;
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+.redes-sociais {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.redes-sociais a {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+}
+.redes-sociais img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
