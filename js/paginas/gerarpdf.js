@@ -41,9 +41,6 @@ function gerarPDF(veiculo) {
     const horaFormatada = agora.toLocaleTimeString("pt-BR");
     doc.text(`Gerado em ${dataFormatada} às ${horaFormatada}`, 14, 28);
 
-    const score = veiculo.score !== undefined ? veiculo.score : 0;
-    doc.text(`Score do proprietário: ${Number(score).toFixed(1)} / 5.0`, 14, 36);
-
     // ── Bloco de dados do veículo 
     let y = 52;
 
