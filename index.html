@@ -1,139 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🚗 Auto History</title>
-    <link rel="stylesheet" href="css/paginas/home.css">
+    <title>Dashboard</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/paginas/dashboard.css">
+
 </head>
-
 <body>
-
     <div id="menu"></div>
-
-    <section class="inicio">
-        <p class="etiqueta">Informação confiável para decisões melhores</p>
-
-        <h1>Mais clareza na compra e venda<br><span>de veículos usados</span></h1>
-
-        <p class="texto-inicial">
-            O Auto History foi pensado para organizar registros importantes do veículo,
-            reunir dados de manutenção e tornar o histórico mais acessível, confiável e útil
-            para quem vende, compra ou acompanha a vida útil do automóvel.
-        </p>
-
-        <section class="acoes-inicio">
-
-        </section>
-
-        <section class="numeros">
-            <article class="numero-item">
-                <h3>Mais segurança</h3>
-                <p>para consultar informações</p>
-            </article>
-
-            <article class="numero-item">
-                <h3>Mais confiança</h3>
-                <p>durante a negociação</p>
-            </article>
-
-            <article class="numero-item">
-                <h3>Mais organização</h3>
-                <p>no histórico do veículo</p>
-            </article>
-        </section>
-    </section>
-
-    <section id="funcionalidades" class="secao">
-        <p class="titulo-pequeno">Recursos</p>
-        <h2 class="titulo-secao">O que a plataforma oferece</h2>
-        <p class="texto-secao">
-            A proposta do sistema é concentrar informações relevantes do veículo
-            em um ambiente mais claro, validado e fácil de consultar.
-        </p>
-
-        <section class="grade-cards">
-            <article class="card">
-                <h3>Registro do Histórico</h3>
-                <p>
-                    Armazena dados de manutenção, peças trocadas e ocorrências importantes
-                    relacionadas ao veículo.
-                </p>
-            </article>
-
-            <article class="card">
-                <h3>Comprovação por Arquivos</h3>
-                <p>
-                    Permite anexar fotos e documentos para fortalecer a veracidade
-                    dos registros realizados.
-                </p>
-            </article>
-
-            <article class="card">
-                <h3>Participação das Oficinas</h3>
-                <p>
-                    Oficinas cadastradas podem inserir informações diretamente no sistema,
-                    aumentando a confiança nos dados.
-                </p>
-            </article>
-
-            <article class="card">
-                <h3>Compartilhamento Facilitado</h3>
-                <p>
-                    O histórico pode ser consultado e futuramente compartilhado com mais praticidade
-                    em negociações.
-                </p>
-            </article>
-        </section>
-    </section>
-
-    <section id="comofunciona" class="secao secao-escura">
-        <p class="titulo-pequeno">Etapas</p>
-        <h2 class="titulo-secao">Como o sistema funciona</h2>
-        <p class="texto-secao">
-            O uso da plataforma foi pensado para ser simples e útil no acompanhamento
-            do histórico do veículo.
-        </p>
-
-        <section class="grade-etapas">
-            <article class="etapa">
-                <span class="numero-etapa">01</span>
-                <h3>Identificação do veículo</h3>
-                <p>
-                    O veículo é relacionado ao sistema por informações como chassi
-                    e placa, criando um perfil para reunir os dados.
-                </p>
-            </article>
-
-            <article class="etapa">
-                <span class="numero-etapa">02</span>
-                <h3>Inclusão de registros</h3>
-                <p>
-                    São adicionados dados como manutenções, peças, imagens
-                    e documentos importantes.
-                </p>
-            </article>
-
-            <article class="etapa">
-                <span class="numero-etapa">03</span>
-                <h3>Consulta das informações</h3>
-                <p>
-                    O histórico reunido pode ser visualizado de forma mais organizada,
-                    apoiando análises e negociações.
-                </p>
-            </article>
-        </section>
-    </section>
-
-    <script src="js/paginas/home.js"></script>
-    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    
+    <div id="root"></div>
+    
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- scripits para o pdf, NÃO MEXA--> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+    <script src="js/paginas/gerarpdf.js"></script>
+
     <script type="text/babel" src="js/baseDoSistema/storage.js"></script>
     <script type="text/babel" src="js/paginas/dashboard.js"></script>
-
 </body>
-
 </html>

@@ -34,11 +34,12 @@ function Menu() {
             </button>
 
             <nav className={`menu ${open ? 'active' : ''}`} aria-hidden={!open && window.innerWidth <= 768}>
-                <a href="index.html#funcionalidades">Recursos</a>
-                <a href="index.html#comofunciona">Etapas</a>
+                <a href="inicial.html">Landing Page</a>
+                <a href="inicial.html#funcionalidades">Recursos</a>
+                <a href="index.html">Inicio</a>
                 <a href="oficina.html">Oficinas Parceiras</a>
                 <a href="sobreNos.html">Sobre nós</a>
-                <a href="dashboard.html?login=true" id="abrir-login">Entrar</a>
+                <a href="index.html?login=true" id="abrir-login">Entrar</a>
             </nav>
         </header>
     );
