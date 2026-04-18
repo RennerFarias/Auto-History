@@ -9,27 +9,15 @@
 </head>
 <body>
         
-
     <div id="pagina-veiculo">
         <div id="menu"></div>
-
         <div id="geral">
             <div id="container-1">
                 <button><a class="retornar_veiculos" href="dashboard.html">← Meus veículos</a></button>
             </div>
-
-            <div id="detalhes-veiculo">
-
-            </div>
-
-            <div id="botoes">
-                
-            </div>
-
-            <div id="lista-manutencoes">
-
-            </div>
-            
+            <div id="detalhes-veiculo"></div>
+            <div id="botoes"></div>
+            <div id="lista-manutencoes"></div>
         </div>
     </div>
 
@@ -38,29 +26,34 @@
             <h2>Nova Manutenção</h2>
             <form id="form-manutencao">
                 <input type="text" id="tipo" placeholder="Tipo de Manutenção: Óleo, Pneu, Freio" required>
-
                 <input type="number" name="quilometragem" id="quilometragem" placeholder="Quilometragem" required>
-
                 <input type="text" id="oficina" placeholder="Oficina" required>
-                
                 <input type="date" id="data" required>
-
                 <input type="number" id="custo" placeholder="Custo (opcional)" step="0.01">
-                
                 <textarea id="descricao" placeholder="Descreva a manutenção" required></textarea>
-                
                 <button type="submit" class="btn-salvar">Salvar</button>
                 <button type="button" class="btn-cancelar">Cancelar</button>
             </form>
         </div>
-
     </div>
-    <script type="text/babel" src="js/baseDoSistema/storage.js" ></script>
-    <script src="js/paginas/veiculo.js" defer></script>
+
+    <!-- 1. React e Babel -->
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
-     <script src="js/gerarPDF.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+
+    <!-- 2. Storage (depende do Babel) -->
+    <script type="text/babel" src="js/baseDoSistema/storage.js"></script>
+
+    <!-- 3. jsPDF (apenas uma vez) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+
+    <!-- 4. Função do PDF -->
+    <script src="js/paginas/gerarpdf.js"></script>
+
+    <!-- 5. Lógica da página por último -->
+    <script src="js/paginas/veiculo.js"></script>
+
 </body>
 </html>

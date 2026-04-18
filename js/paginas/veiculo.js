@@ -49,9 +49,7 @@ if (btnRegistrar) {
 }
 
 if (btnPdf) {
-    btnPdf.addEventListener("click", () => {
-        alert("PDF ainda não implementado");
-    });
+    btnPdf.addEventListener("click", () => gerarPDF(veiculo));
 }
 
 // Renderizar lista de manutenções
