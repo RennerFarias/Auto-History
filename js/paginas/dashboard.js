@@ -26,21 +26,28 @@ function App() {
 }
 
 function TelaLogin({ onLogin }) {
+    const [nome, setNome] = React.useState("");
     const [email, setEmail] = React.useState("");
     const [senha, setSenha] = React.useState("");
     const [modoCadastro, setModoCadastro] = React.useState(false);
 
     function handleLogin() {
+        if (!nome || !email || !senha) {
+            alert("Preencha todos os campos!");
+            return;
+        }
+
         const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
         const usuarioEncontrado = usuarios.find(
             u =>
+                u.nome === nome.trim() &&
                 u.email === email.trim() &&
                 u.senha === senha.trim()
         );
 
         if (!usuarioEncontrado) {
-            alert("Email ou senha incorretos");
+            alert("Nome, email ou senha incorretos");
             return;
         }
 
@@ -50,7 +57,7 @@ function TelaLogin({ onLogin }) {
     }
 
     function handleCadastro() {
-        if (!email || !senha) {
+        if (!nome || !email || !senha) {
             alert("Preencha todos os campos!");
             return;
         }
@@ -65,6 +72,7 @@ function TelaLogin({ onLogin }) {
         }
 
         const novoUsuario = {
+            nome: nome.trim(),
             email: email.trim(),
             senha: senha.trim()
         };
@@ -75,6 +83,7 @@ function TelaLogin({ onLogin }) {
 
         alert("Cadastro realizado!");
 
+        setNome("");
         setEmail("");
         setSenha("");
         setModoCadastro(false);
@@ -82,9 +91,15 @@ function TelaLogin({ onLogin }) {
 
     return (
         <div className="login-container">
-
             <div className="login-card">
                 <h1>{modoCadastro ? "Cadastro" : "Entrar"}</h1>
+
+                <input
+                    type="text"
+                    placeholder="Nome"
+                    value={nome}
+                    onChange={(e) => setNome(e.target.value)}
+                />
 
                 <input
                     type="email"
@@ -195,7 +210,6 @@ function TelaUsuario({ onLogout }) {
         setEditandoIndex(index);
     }
 
-    //  CONFIRMAÇÃO AQUI
     function excluirVeiculo(index) {
         const confirmar = confirm("Tem certeza que deseja excluir este veículo?");
 
@@ -211,7 +225,7 @@ function TelaUsuario({ onLogout }) {
         <div className="dashboard">
 
             <div className="topo">
-                <h1>Olá, {usuario.email} 👋</h1>
+                <h1>Olá, {usuario.nome || usuario.email} 👋</h1>
 
                 <button
                     className="btn-sair"
@@ -278,12 +292,12 @@ function TelaUsuario({ onLogout }) {
                     veiculos.map((v, index) => (
                         <div className="card" key={index}>
                             <a href={`veiculo.html?id=${index}`}>
-                            <h3> {v.modelo} - {v.marca}</h3>
-                            
-                            <p><strong>Placa:</strong> {v.placa}</p>
-                            <p><strong>Cor:</strong> {v.cor}</p>
-                            <p><strong>Ano:</strong> {v.ano}</p>
-                            <p><strong>KM:</strong> {v.km}</p></a>
+                                <h3> {v.modelo} - {v.marca}</h3>
+
+                                <p><strong>Placa:</strong> {v.placa}</p>
+                                <p><strong>Cor:</strong> {v.cor}</p>
+                                <p><strong>Ano:</strong> {v.ano}</p>
+                                <p><strong>KM:</strong> {v.km}</p></a>
 
                             <div className="acoes-card">
                                 <button
@@ -300,7 +314,7 @@ function TelaUsuario({ onLogout }) {
                                     Excluir
                                 </button>
 
-                                 <button
+                                <button
                                     className="btn-pdf"
                                     onClick={() => gerarPDF(v)}
                                 >
