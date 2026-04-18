@@ -92,7 +92,10 @@ function TelaLogin({ onLogin }) {
     return (
         <div className="login-container">
             <div className="login-card">
-                <h1>{modoCadastro ? "Cadastro" : "Entrar"}</h1>
+                
+                <h1>
+                    <img src="img/logoEntrar.png" alt="Logo Auto History"/>
+                    {modoCadastro ? "Cadastro" : "Entrar"}</h1>
 
                 <input
                     type="text"

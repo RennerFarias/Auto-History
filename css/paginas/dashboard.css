@@ -16,6 +16,7 @@
     color: #fff;
 }
 
+
 .login-card input {
     width: 100%;
     padding: 14px;
@@ -46,6 +47,19 @@
 
 .login-card button:hover {
     transform: scale(1.02);
+}
+
+.login-card img {
+    width: 60px;
+    
+}
+
+.login-card h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 .btn-principal {
