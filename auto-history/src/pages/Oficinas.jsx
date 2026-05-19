@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import '../assets/css/oficinasStyle.css';
+
 const oficinas = [
     {
         id: 1,
@@ -25,14 +28,11 @@ const oficinas = [
         contato: "(11) 1234-5678",
         horario: "Segunda a sexta, das 8h às 18h",
         servicos: "Revisão geral, troca de óleo, alinhamento e balanceamento, diagnóstico eletrônico, entre outros."
-
     }
-
 ];
 
-
 function ItemGaveta({ dados }) {
-    const [aberta, setAberta] = React.useState(false);
+    const [aberta, setAberta] = useState(false);
 
     return (
         <li>
@@ -43,27 +43,29 @@ function ItemGaveta({ dados }) {
                 </button>
 
                 <div className={`gaveta-conteudo ${aberta ? 'ativo' : ''}`}>
-                    <p>Localização: {dados.localizacao}</p>
-                    <p>Contato: {dados.contato}</p>
-                    <p>Horário de atendimento: {dados.horario}</p>
-                    <p>Serviços oferecidos: {dados.servicos}</p>
+                    <p><strong>Localização:</strong> {dados.localizacao}</p>
+                    <p><strong>Contato:</strong> {dados.contato}</p>
+                    <p><strong>Horário de atendimento:</strong> {dados.horario}</p>
+                    <p><strong>Serviços oferecidos:</strong> {dados.servicos}</p>
                 </div>
             </div>
         </li>
     );
 }
 
-function ListarOficinas() {
+export default function Oficinas() {
     return (
-        <ul className="listagem">
-            {oficinas.map((oficina) => (
-                <ItemGaveta key={oficina.id} dados={oficina} />
-            ))}
-        </ul>
+        <div className="cont-principal">
+            <div className="inicio">
+                <h1>Oficinas parceiras</h1>
+                <p>Oferecemos uma rede de oficinas confiáveis e qualificadas para cuidar do seu carro. Encontre a oficina mais próxima de você e agende seu serviço com facilidade.</p>
+            </div>
+            
+            <ul className="listagem">
+                {oficinas.map((oficina) => (
+                    <ItemGaveta key={oficina.id} dados={oficina} />
+                ))}
+            </ul>
+        </div>
     );
 }
-
-const elementoLista = document.getElementById('lista-oficinas');
-const raizLista = ReactDOM.createRoot(elementoLista);
-raizLista.render(<ListarOficinas />);
-

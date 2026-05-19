@@ -1,35 +1,32 @@
-function App() {
-    const params = new URLSearchParams(window.location.search);
-    const veioDoLogin = params.get("login");
+import { useState, useEffect } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
+import gerarPDF from '../utils/gerarPdf';
+import logoEntrar from '../assets/img/logoEntrar.png';
+import '../assets/css/dashboard.css';
 
+export default function Dashboard() {
+    const [searchParams] = useSearchParams();
+    const veioDoLogin = searchParams.get("login");
     const usuarioSalvo = localStorage.getItem("usuario");
 
-    const [logado, setLogado] = React.useState(
-        usuarioSalvo && !veioDoLogin
-    );
-
-    React.useEffect(() => {
-        if (usuarioSalvo && document.referrer.includes("dashboard")) {
-            setLogado(true);
-        }
-    }, []);
+    const [logado, setLogado] = useState(!!usuarioSalvo && !veioDoLogin);
 
     return (
-        <>
+        <div className="dashboard-page">
             {logado ? (
                 <TelaUsuario onLogout={() => setLogado(false)} />
             ) : (
                 <TelaLogin onLogin={() => setLogado(true)} />
             )}
-        </>
+        </div>
     );
 }
 
 function TelaLogin({ onLogin }) {
-    const [nome, setNome] = React.useState("");
-    const [email, setEmail] = React.useState("");
-    const [senha, setSenha] = React.useState("");
-    const [modoCadastro, setModoCadastro] = React.useState(false);
+    const [nome, setNome] = useState("");
+    const [email, setEmail] = useState("");
+    const [senha, setSenha] = useState("");
+    const [modoCadastro, setModoCadastro] = useState(false);
 
     function handleLogin() {
         if (!nome || !email || !senha) {
@@ -38,12 +35,8 @@ function TelaLogin({ onLogin }) {
         }
 
         const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-
         const usuarioEncontrado = usuarios.find(
-            u =>
-                u.nome === nome.trim() &&
-                u.email === email.trim() &&
-                u.senha === senha.trim()
+            u => u.nome === nome.trim() && u.email === email.trim() && u.senha === senha.trim()
         );
 
         if (!usuarioEncontrado) {
@@ -52,7 +45,6 @@ function TelaLogin({ onLogin }) {
         }
 
         localStorage.setItem("usuario", JSON.stringify(usuarioEncontrado));
-
         onLogin();
     }
 
@@ -63,7 +55,6 @@ function TelaLogin({ onLogin }) {
         }
 
         const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-
         const existe = usuarios.find(u => u.email === email.trim());
 
         if (existe) {
@@ -78,9 +69,7 @@ function TelaLogin({ onLogin }) {
         };
 
         usuarios.push(novoUsuario);
-
         localStorage.setItem("usuarios", JSON.stringify(usuarios));
-
         alert("Cadastro realizado!");
 
         setNome("");
@@ -92,49 +81,23 @@ function TelaLogin({ onLogin }) {
     return (
         <div className="login-container">
             <div className="login-card">
-                
                 <h1>
-                    <img src="img/logoEntrar.png" alt="Logo Auto History"/>
-                    {modoCadastro ? "Cadastro" : "Entrar"}</h1>
+                    <img src={logoEntrar} alt="Logo Auto History" />
+                    {modoCadastro ? "Cadastro" : "Entrar"}
+                </h1>
 
-                <input
-                    type="text"
-                    placeholder="Nome"
-                    value={nome}
-                    onChange={(e) => setNome(e.target.value)}
-                />
-
-                <input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-
-                <input
-                    type="password"
-                    placeholder="Senha"
-                    value={senha}
-                    onChange={(e) => setSenha(e.target.value)}
-                />
+                <input type="text" placeholder="Nome" value={nome} onChange={(e) => setNome(e.target.value)} />
+                <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <input type="password" placeholder="Senha" value={senha} onChange={(e) => setSenha(e.target.value)} />
 
                 {modoCadastro ? (
-                    <button className="btn-principal" onClick={handleCadastro}>
-                        Cadastrar
-                    </button>
+                    <button className="btn-principal" onClick={handleCadastro}>Cadastrar</button>
                 ) : (
-                    <button className="btn-principal" onClick={handleLogin}>
-                        Entrar
-                    </button>
+                    <button className="btn-principal" onClick={handleLogin}>Entrar</button>
                 )}
 
-                <button
-                    className="btn-secundario"
-                    onClick={() => setModoCadastro(!modoCadastro)}
-                >
-                    {modoCadastro
-                        ? "Já tem conta? Entrar"
-                        : "Não tem conta? Cadastre-se"}
+                <button className="btn-secundario" onClick={() => setModoCadastro(!modoCadastro)}>
+                    {modoCadastro ? "Já tem conta? Entrar" : "Não tem conta? Cadastre-se"}
                 </button>
             </div>
         </div>
@@ -143,34 +106,19 @@ function TelaLogin({ onLogin }) {
 
 function TelaUsuario({ onLogout }) {
     const usuario = JSON.parse(localStorage.getItem("usuario"));
-
-    if (!usuario) return <p>Carregando...</p>;
+    if (!usuario) return <p style={{ marginTop: '120px', textAlign: 'center' }}>A carregar...</p>;
 
     const chaveVeiculos = `veiculos_${usuario.email}`;
+    const [veiculos, setVeiculos] = useState(JSON.parse(localStorage.getItem(chaveVeiculos)) || []);
+    const [mostrarForm, setMostrarForm] = useState(false);
+    const [editandoIndex, setEditandoIndex] = useState(null);
 
-    const [veiculos, setVeiculos] = React.useState(
-        JSON.parse(localStorage.getItem(chaveVeiculos)) || []
-    );
-
-    const [mostrarForm, setMostrarForm] = React.useState(false);
-    const [editandoIndex, setEditandoIndex] = React.useState(null);
-
-    const [form, setForm] = React.useState({
-        placa: "",
-        modelo: "",
-        marca: "",
-        cor: "",
-        ano: "",
-        chassi: "",
-        km: "",
-        renavam: ""
+    const [form, setForm] = useState({
+        placa: "", modelo: "", marca: "", cor: "", ano: "", chassi: "", km: "", renavam: ""
     });
 
     function handleChange(e) {
-        setForm({
-            ...form,
-            [e.target.name]: e.target.value
-        });
+        setForm({ ...form, [e.target.name]: e.target.value });
     }
 
     function salvarVeiculo() {
@@ -180,7 +128,6 @@ function TelaUsuario({ onLogout }) {
         }
 
         let listaAtualizada;
-
         if (editandoIndex !== null) {
             listaAtualizada = veiculos.map((v, i) =>
                 i === editandoIndex ? { ...form, historico: v.historico || [] } : v
@@ -192,17 +139,7 @@ function TelaUsuario({ onLogout }) {
         setVeiculos(listaAtualizada);
         localStorage.setItem(chaveVeiculos, JSON.stringify(listaAtualizada));
 
-        setForm({
-            placa: "",
-            modelo: "",
-            marca: "",
-            cor: "",
-            ano: "",
-            chassi: "",
-            km: "",
-            renavam: ""
-        });
-
+        setForm({ placa: "", modelo: "", marca: "", cor: "", ano: "", chassi: "", km: "", renavam: "" });
         setMostrarForm(false);
         setEditandoIndex(null);
     }
@@ -214,56 +151,29 @@ function TelaUsuario({ onLogout }) {
     }
 
     function excluirVeiculo(index) {
-        const confirmar = confirm("Tem certeza que deseja excluir este veículo?");
-
-        if (!confirmar) return;
-
+        if (!confirm("Tem certeza que deseja excluir este veículo?")) return;
         const novaLista = veiculos.filter((_, i) => i !== index);
-
         setVeiculos(novaLista);
         localStorage.setItem(chaveVeiculos, JSON.stringify(novaLista));
     }
 
     return (
         <div className="dashboard">
-
             <div className="topo">
                 <h1>Olá, {usuario.nome || usuario.email} 👋</h1>
-
-                <button
-                    className="btn-sair"
-                    onClick={() => {
-                        localStorage.removeItem("usuario");
-                        onLogout();
-                    }}
-                >
-                    Sair
-                </button>
+                <button className="btn-sair" onClick={() => { localStorage.removeItem("usuario"); onLogout(); }}>Sair</button>
             </div>
 
-            <button
-                className="btn-principal"
-                onClick={() => {
-                    setMostrarForm(!mostrarForm);
-                    setEditandoIndex(null);
-                }}
-            >
+            <button className="btn-principal" onClick={() => { setMostrarForm(!mostrarForm); setEditandoIndex(null); }}>
                 + Cadastrar Veículo
             </button>
 
             {mostrarForm && (
                 <div className="card form-veiculo">
-
-                    <h3>
-                        {editandoIndex !== null
-                            ? "Editar Veículo"
-                            : "Novo Veículo"}
-                    </h3>
-
+                    <h3>{editandoIndex !== null ? "Editar Veículo" : "Novo Veículo"}</h3>
                     <input name="placa" placeholder="Placa *" value={form.placa} onChange={handleChange} />
                     <input name="modelo" placeholder="Modelo *" value={form.modelo} onChange={handleChange} />
                     <input name="marca" placeholder="Marca *" value={form.marca} onChange={handleChange} />
-
                     <input name="cor" placeholder="Cor" value={form.cor} onChange={handleChange} />
                     <input name="ano" placeholder="Ano" value={form.ano} onChange={handleChange} />
                     <input name="chassi" placeholder="Chassi" value={form.chassi} onChange={handleChange} />
@@ -274,16 +184,7 @@ function TelaUsuario({ onLogout }) {
                         <button className="btn-principal" onClick={salvarVeiculo}>
                             {editandoIndex !== null ? "Salvar Alterações" : "Salvar"}
                         </button>
-
-                        <button
-                            className="btn-secundario"
-                            onClick={() => {
-                                setMostrarForm(false);
-                                setEditandoIndex(null);
-                            }}
-                        >
-                            Cancelar
-                        </button>
+                        <button className="btn-secundario" onClick={() => { setMostrarForm(false); setEditandoIndex(null); }}>Cancelar</button>
                     </div>
                 </div>
             )}
@@ -294,45 +195,23 @@ function TelaUsuario({ onLogout }) {
                 ) : (
                     veiculos.map((v, index) => (
                         <div className="card" key={index}>
-                            <a href={`veiculo.html?id=${index}`}>
-                                <h3> {v.modelo} - {v.marca}</h3>
-
+                            <Link to={`/veiculo/${index}`}>
+                                <h3>{v.modelo} - {v.marca}</h3>
                                 <p><strong>Placa:</strong> {v.placa}</p>
                                 <p><strong>Cor:</strong> {v.cor}</p>
                                 <p><strong>Ano:</strong> {v.ano}</p>
-                                <p><strong>KM:</strong> {v.km}</p></a>
+                                <p><strong>KM:</strong> {v.km}</p>
+                            </Link>
 
                             <div className="acoes-card">
-                                <button
-                                    className="btn-editar"
-                                    onClick={() => editarVeiculo(index)}
-                                >
-                                    Editar
-                                </button>
-
-                                <button
-                                    className="btn-excluir"
-                                    onClick={() => excluirVeiculo(index)}
-                                >
-                                    Excluir
-                                </button>
-
-                                <button
-                                    className="btn-pdf"
-                                    onClick={() => gerarPDF(v)}
-                                >
-                                    PDF
-                                </button>
-
+                                <button className="btn-editar" onClick={() => editarVeiculo(index)}>Editar</button>
+                                <button className="btn-excluir" onClick={() => excluirVeiculo(index)}>Excluir</button>
+                                <button className="btn-pdf" onClick={() => gerarPDF(v)}>PDF</button>
                             </div>
                         </div>
                     ))
                 )}
             </div>
-
         </div>
     );
 }
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
