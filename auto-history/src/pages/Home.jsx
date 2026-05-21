@@ -1,102 +1,103 @@
-import { Link } from 'react-router-dom';
-import '../assets/css/home.css';
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import '../styles/paginas/home.css'
+
+const RECURSOS = [
+  { emoji: '📋', titulo: 'Registro do Histórico', desc: 'Armazena dados de manutenção, peças trocadas e ocorrências importantes relacionadas ao veículo.' },
+  { emoji: '📎', titulo: 'Comprovação por Arquivos', desc: 'Permite anexar fotos e documentos para fortalecer a veracidade dos registros realizados.' },
+  { emoji: '🏪', titulo: 'Participação das Oficinas', desc: 'Oficinas cadastradas podem inserir informações diretamente no sistema, aumentando a confiança nos dados.' },
+  { emoji: '🔗', titulo: 'Compartilhamento Facilitado', desc: 'O histórico pode ser consultado e futuramente compartilhado com mais praticidade em negociações.' },
+]
+
+const ETAPAS = [
+  { emoji: '🔍', label: 'Etapa 01', titulo: 'Identifique o veículo', desc: 'Informe o chassi ou placa do veículo para criar o perfil no sistema.' },
+  { emoji: '📄', label: 'Etapa 02', titulo: 'Adicione os registros', desc: 'Insira manutenções, peças trocadas, imagens e documentos importantes.' },
+  { emoji: '✅', label: 'Etapa 03', titulo: 'Consulte e decida', desc: 'Visualize o histórico completo e tome decisões com mais segurança.' },
+]
 
 export default function Home() {
-    return (
-        <div className="home-page">
-            <section className="inicio">
-                <p className="etiqueta">Informação confiável para decisões melhores</p>
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [menuDark, setMenuDark] = useState(false)
 
-                <h1>Mais clareza na compra e venda<br /><span>de veículos usados</span></h1>
+  useEffect(() => {
+    const handleScroll = () => {
+      const hero = document.querySelector('.hero')
+      if (!hero) return
+      setMenuDark(window.scrollY > hero.offsetHeight - 60)
+    }
 
-                <p className="texto-inicial">
-                    O Auto History foi pensado para organizar registros importantes do veículo,
-                    reunir dados de manutenção e tornar o histórico mais acessível, confiável e útil
-                    para quem vende, compra ou acompanha a vida útil do automóvel.
-                </p>
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
-                <section className="acoes-inicio">
-                    <Link to="/dashboard" className="btn-principal" style={{ width: 'auto', padding: '14px 28px', display: 'inline-block', textAlign: 'center' }}>
-                        Começar Agora
-                    </Link>
-                </section>
+  return (
+    <>
+      {/* BOTÃO MENU */}
+      <button
+        className={`menu-btn ${menuOpen ? 'active' : ''} ${menuDark && !menuOpen ? 'dark' : ''}`}
+        onClick={() => setMenuOpen(prev => !prev)}
+      >
+        <span />
+        <span />
+        <span />
+      </button>
 
-                <section className="numeros">
-                    <article className="numero-item">
-                        <h3>Mais segurança</h3>
-                        <p>para consultar informações</p>
-                    </article>
+      {/* SIDEBAR */}
+      <aside className={`sidebar ${menuOpen ? 'open' : ''}`} aria-label="Navegação do site">
+        <h2>Menu</h2>
+        <a href="#hero" onClick={() => setMenuOpen(false)}>Início</a>
+        <a href="#recursos" onClick={() => setMenuOpen(false)}>Recursos</a>
+        <a href="#como-funciona" onClick={() => setMenuOpen(false)}>Como funciona</a>
+        <Link to="/login" onClick={() => setMenuOpen(false)}>Login</Link>
+      </aside>
 
-                    <article className="numero-item">
-                        <h3>Mais confiança</h3>
-                        <p>durante a negociação</p>
-                    </article>
+      <main className="home-page">
+        {/* HERO */}
+        <section id="hero" className="hero">
+        <p className="hero-etiqueta">Relatórios de histórico de veículos</p>
+        <h1>Todo carro tem <span>uma história.</span><br />Saiba disso.</h1>
+        <p className="hero-subtitulo">
+          Relatórios completos do histórico do veículo.<br />
+          Tome decisões seguras antes de comprar seu próximo veículo.
+        </p>
+        <Link to="/login" className="hero-btn">Ver histórico</Link>
+      </section>
 
-                    <article className="numero-item">
-                        <h3>Mais organização</h3>
-                        <p>no histórico do veículo</p>
-                    </article>
-                </section>
-            </section>
+      {/* RECURSOS */}
+      <section id="recursos" className="recursos">
+        <p className="secao-label">O que você recebe ao usar o nosso sistema</p>
+        <h2 className="secao-titulo">Tudo o que você precisa saber</h2>
+        {RECURSOS.map((r, i) => (
+          <div className="recurso-item" key={i}>
+            <div className="recurso-icone">{r.emoji}</div>
+            <div className="recurso-texto">
+              <h3>{r.titulo}</h3>
+              <p>{r.desc}</p>
+            </div>
+          </div>
+        ))}
+      </section>
 
-            <section id="funcionalidades" className="secao">
-                <p className="titulo-pequeno">Recursos</p>
-                <h2 className="titulo-secao">O que a plataforma oferece</h2>
-                <p className="texto-secao">
-                    A proposta do sistema é concentrar informações relevantes do veículo
-                    em um ambiente mais claro, validado e fácil de consultar.
-                </p>
-
-                <section className="grade-cards">
-                    <article className="card">
-                        <h3>Registro do Histórico</h3>
-                        <p>Armazena dados de manutenção, peças trocadas e ocorrências importantes relacionadas ao veículo.</p>
-                    </article>
-
-                    <article className="card">
-                        <h3>Comprovação por Arquivos</h3>
-                        <p>Permite anexar fotos e documentos para fortalecer a veracidade dos registros realizados.</p>
-                    </article>
-
-                    <article className="card">
-                        <h3>Participação das Oficinas</h3>
-                        <p>Oficinas cadastradas podem inserir informações diretamente no sistema, aumentando a confiança nos dados.</p>
-                    </article>
-
-                    <article className="card">
-                        <h3>Compartilhamento Facilitado</h3>
-                        <p>O histórico pode ser consultado e futuramente compartilhado com mais praticidade em negociações.</p>
-                    </article>
-                </section>
-            </section>
-
-            <section id="comofunciona" className="secao secao-escura">
-                <p className="titulo-pequeno">Etapas</p>
-                <h2 className="titulo-secao">Como o sistema funciona</h2>
-                <p className="texto-secao">
-                    O uso da plataforma foi pensado para ser simples e útil no acompanhamento do histórico do veículo.
-                </p>
-
-                <section className="grade-etapas">
-                    <article className="etapa">
-                        <span className="numero-etapa">01</span>
-                        <h3>Identificação do veículo</h3>
-                        <p>O veículo é relacionado ao sistema por informações como chassi e placa, criando um perfil para reunir os dados.</p>
-                    </article>
-
-                    <article className="etapa">
-                        <span className="numero-etapa">02</span>
-                        <h3>Inclusão de registros</h3>
-                        <p>São adicionados dados como manutenções, peças, imagens e documentos importantes.</p>
-                    </article>
-
-                    <article className="etapa">
-                        <span className="numero-etapa">03</span>
-                        <h3>Consulta das informações</h3>
-                        <p>O histórico reunido pode ser visualizado de forma mais organizada, apoiando análises e negociações.</p>
-                    </article>
-                </section>
-            </section>
+      {/* COMO FUNCIONA */}
+      <section id="como-funciona" className="como-funciona">
+        <p className="secao-label">Como funciona</p>
+        <h2 className="secao-titulo secao-titulo--simple">
+          Apenas três passos simples
+        </h2>
+        <h3>Entenda como todo nosso processo funciona de forma simples e eficaz</h3>
+        <div className="etapas-container">
+          {ETAPAS.map((e, i) => (
+            <div className="etapa" key={i}>
+              <div className="etapa-linha" />
+              <div className="etapa-circulo">{e.emoji}</div>
+              <p className="etapa-label">{e.label}</p>
+              <h3>{e.titulo}</h3>
+              <p>{e.desc}</p>
+            </div>
+          ))}
         </div>
-    );
+      </section>
+      </main>
+    </>
+  )
 }
