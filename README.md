@@ -65,9 +65,11 @@ O sistema permite que usuários cadastrem eventos ou alterações, visualizem um
 - `npm run lint` — executa o ESLint no projeto
 
 ## 👥 Integrantes do grupo
-- Integrante 1
-- Integrante 2
-- Integrante 3
+- arthur melo
+- Elian Barros
+- igor Morais
+- Rafael Barbosa
+- Renner Farias
 
 ## ✅ Observações
 - A aplicação usa Vite para build rápida e recarga instantânea.
