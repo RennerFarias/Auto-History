@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import '../styles/paginas/home.css'
+import '../assets/css/home.css'
 
 const RECURSOS = [
   { emoji: '📋', titulo: 'Registro do Histórico', desc: 'Armazena dados de manutenção, peças trocadas e ocorrências importantes relacionadas ao veículo.' },
