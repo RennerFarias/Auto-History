@@ -29,18 +29,18 @@ function TelaLogin({ onLogin }) {
     const [modoCadastro, setModoCadastro] = useState(false);
 
     function handleLogin() {
-        if (!nome || !email || !senha) {
+        if (!email || !senha) {
             alert("Preencha todos os campos!");
             return;
         }
 
         const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
         const usuarioEncontrado = usuarios.find(
-            u => u.nome === nome.trim() && u.email === email.trim() && u.senha === senha.trim()
+            u => u.email === email.trim() && u.senha === senha.trim()
         );
 
         if (!usuarioEncontrado) {
-            alert("Nome, email ou senha incorretos");
+            alert("Email ou senha incorretos");
             return;
         }
 
@@ -86,9 +86,27 @@ function TelaLogin({ onLogin }) {
                     {modoCadastro ? "Cadastro" : "Entrar"}
                 </h1>
 
-                <input type="text" placeholder="Nome" value={nome} onChange={(e) => setNome(e.target.value)} />
-                <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                <input type="password" placeholder="Senha" value={senha} onChange={(e) => setSenha(e.target.value)} />
+                {modoCadastro && (
+                    <input
+                        type="text"
+                        placeholder="Nome"
+                        value={nome}
+                        onChange={(e) => setNome(e.target.value)}
+                    />
+                )}
+
+                <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                    type="password"
+                    placeholder="Senha"
+                    value={senha}
+                    onChange={(e) => setSenha(e.target.value)}
+                />
 
                 {modoCadastro ? (
                     <button className="btn-principal" onClick={handleCadastro}>Cadastrar</button>
