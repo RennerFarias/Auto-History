@@ -10,8 +10,9 @@ html {
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #7ab1ff53;
-    color: #1f1f1f;
+    background: linear-gradient(180deg, #eef5ff 0%, #f8fbff 45%, #ffffff 100%);
+    color: #10213b;
+    min-height: 100vh;
 }
 
 .cabecalho {
@@ -24,13 +25,14 @@ body {
     top: 0;
     left: 0;
     z-index: 1000;
-    background: #f5f4ef;
-    border-bottom: 1px solid #ddd7c8;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(74, 144, 255, 0.18);
 }
 
 .logo {
     font-weight: bold;
-    color: #2b2b2b;
+    color: #0a1328;
     padding: 0;
     border-radius: 0;
     border: none;
@@ -51,13 +53,13 @@ body {
 
 .menu a {
     text-decoration: none;
-    color: #4f4f4f;
+    color: #10213b;
     font-size: 15px;
     transition: 0.3s;
 }
 
 .menu a:hover {
-    color: #355c4b;
+    color: #4a90ff;
 }
 
 #abrir-login {
@@ -66,13 +68,14 @@ body {
     border-radius: 8px;
     font-weight: bold;
     color: #ffffff;
-    background: #355c4b;
+    transition: background 0.3s ease, transform 0.3s ease;
+    background: linear-gradient(135deg, #4a90ff, #5e6dff);
     cursor: pointer;
-    transition: 0.3s;
 }
 
 #abrir-login:hover {
-    background: #2b4a3c;
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #5e6dff, #4a90ff);
 }
 
 /* Adicione isso ao container/botão que envolve os spans */
@@ -91,7 +94,7 @@ body {
     display: block;
     width: 24px;
     height: 2px;
-    background: #355c4b;
+    background: #0a1328;
     border-radius: 2px;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
@@ -139,7 +142,7 @@ body {
         max-height: 0;
         opacity: 0;
         overflow: hidden;
-        background: #f5f4ef;
+        background: #eef5ff;
         border-radius: 0 0 12px 12px;
     }
 
@@ -154,8 +157,8 @@ body {
         width: 100%;
         padding: 14px 0;
         font-size: 14px;
-        color: #355c4b;
-        border-bottom: 1px solid rgba(53, 92, 75, 0.14);
+        color: #0a1328;
+        border-bottom: 1px solid rgba(74, 144, 255, 0.12);
     }
 
     .menu a:last-child {

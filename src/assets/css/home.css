@@ -13,14 +13,14 @@ body,
 body {
   font-family: Inter, Arial, sans-serif;
   color: #0f172a;
-  background: #f5f8ff;
+  background: linear-gradient(180deg, #eef5ff 0%, #f8fbff 45%, #ffffff 100%);
 }
 
 .home-page {
   width: 100%;
   min-height: 100vh;
   padding-top: 92px;
-  background: radial-gradient(circle at top left, rgba(74, 144, 255, 0.18), transparent 28%),
+  background: radial-gradient(circle at top left, rgba(74, 144, 255, 0.12), transparent 28%),
     linear-gradient(180deg, #eef5ff 0%, #f8fbff 45%, #ffffff 100%);
 }
 
@@ -32,7 +32,7 @@ body {
   width: 280px;
   max-width: calc(100% - 40px);
   height: 100vh;
-  background: #0b1227;
+  background: #0a1328;
   padding: 90px 26px;
   display: flex;
   flex-direction: column;
@@ -47,19 +47,19 @@ body {
 }
 
 .sidebar h2 {
-  color: #fff;
+  color: #eef5ff;
   font-size: 26px;
 }
 
 .sidebar a {
-  color: #a6b4d4;
+  color: #c8d8ff;
   text-decoration: none;
   font-size: 17px;
   transition: color 0.22s ease;
 }
 
 .sidebar a:hover {
-  color: #7ab2ff;
+  color: #4a90ff;
 }
 
 /* botão menu */
@@ -207,7 +207,7 @@ body {
   font-size: 12px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: #4c7ddf;
+  color: #4a90ff;
   margin-bottom: 14px;
 }
 
@@ -215,7 +215,7 @@ body {
   font-size: clamp(2.3rem, 3vw, 3.5rem);
   font-weight: 800;
   color: #10213b;
-  border-left: 5px solid #4c7ddf;
+  border-left: 5px solid #4a90ff;
   padding-left: 16px;
   margin-bottom: 40px;
 }
@@ -317,7 +317,7 @@ body {
   font-size: 11px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #4c7ddf;
+  color: #4a90ff;
   font-weight: 700;
 }
 

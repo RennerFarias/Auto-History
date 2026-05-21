@@ -3,18 +3,19 @@ body {
     flex-direction: column;
     padding: 3rem 1rem;
     min-height: 100vh;
-    
+    background: linear-gradient(180deg, #eef5ff 0%, #f8fbff 45%, #ffffff 100%);
 }
 
 .cont-principal {
     width: 100%;
     margin: 7rem auto;
-    background-color: rgba(255, 255, 255, 0.7); 
-    backdrop-filter: blur(12px); 
-    padding: 2.5rem ;
+    background-color: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(12px);
+    padding: 2.5rem;
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.15); 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); background: linear-gradient(180deg, #f5f4ef 0%, #ece8dd 100%);
+    border: 1px solid rgba(74, 144, 255, 0.18);
+    box-shadow: 0 10px 30px rgba(10, 19, 40, 0.12);
+    background: linear-gradient(180deg, #eef5ff 0%, #f8fbff 45%, #ffffff 100%);
 }
 
 .inicio {
@@ -23,12 +24,12 @@ body {
 }
 
 .inicio h1 {
-    color: #355c4b;
+    color: #4a90ff;
     font-size: 36px;
     margin-bottom: 10px;
 }
 .inicio p {
-    color: #2f2f2f;
+    color: #10213b;
     font-size: 18px;
     line-height: 1.6;
 }
@@ -46,23 +47,21 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 20px 60px rgba(10, 19, 40, 0.14);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     flex: 1 1 260px;
-    max-width: 320px;
+    max-width: 520px;
     min-width: 240px;
-    background-color: #355c4b;
+    background: linear-gradient(180deg, #0a1328 0%, #101f39 100%);
+    border: 1px solid rgba(74, 144, 255, 0.15);
 }
 
 .gaveta:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 24px 70px rgba(10, 19, 40, 0.18);
 }
-
-
 
 .integrante {
     display: flex;
@@ -72,26 +71,27 @@ body {
     min-height: 200px;
     height: 350px;
     padding: 20px;
-    color: #000;
+    color: #eef5ff;
     text-decoration: none;
     border-radius: 15px;
     border: none;
     text-align: left;
-    transition: background-color 0.3s ease;
-    background: linear-gradient(90deg, #d4af37, #ff8c00);
+    transition: background 0.3s ease, transform 0.3s ease;
+    background: linear-gradient(135deg, #4a90ff, #5e6dff);
 }
 
 .integrante:hover {
-    background: linear-gradient(90deg, #ff8c00, #d4af37);
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #5e6dff, #4a90ff);
 }
 
 .integrante h2 {
-    color: #000;
+    color: #eef5ff;
     margin-bottom: 10px;
 }
 
 .integrante p {
-    color: #000;
+    color: #eef5ff;
     font-size: 18px;
     line-height: 1.4;
 }

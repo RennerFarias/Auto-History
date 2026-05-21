@@ -1,6 +1,8 @@
 /* 🔹 BASE */
 #pagina-veiculo {
     margin-top: 120px;
+    background: linear-gradient(180deg, #eef5ff 0%, #f8fbff 45%, #ffffff 100%);
+    min-height: 100vh;
 }
 
 #geral {
@@ -8,45 +10,54 @@
     max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(74, 144, 255, 0.18);
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(10, 19, 40, 0.08);
 }
 
 /* BOTÃO VOLTAR */
 #container-1 button {
-    transition: background-color 0.3s ease;
-    background: linear-gradient(90deg, #d4af37, #ff8c00);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    background: linear-gradient(90deg, #4a90ff, #5e6dff);
     border: none;
     cursor: pointer;
     border-radius: 10px;
     font-size: 14px;
     padding: 8px 12px;
+    color: #fff;
 }
 
 #container-1 button:hover {
-    background: linear-gradient(90deg, #ff8c00, #d4af37);
-    color: #000000;
+    background: linear-gradient(90deg, #5e6dff, #4a90ff);
+    color: #fff;
+    transform: translateY(-2px);
 }
 
 /* CARD BASE */
 .card {
-    background: #1e1e1e;
+    background: #eef5ff;
     border-radius: 12px;
     padding: 20px;
     margin-bottom: 20px;
+    border: 1px solid rgba(74, 144, 255, 0.18);
 }
 
 /* DETALHES DO VEÍCULO */
 #detalhes-veiculo {
-    background: #3e3b3b1c;
+    background: rgba(238, 245, 255, 0.9);
     padding: 20px;
     margin-bottom: 20px;
-    color: black;
+    color: #10213b;
     margin-top: 13px;
     border-radius: 12px;
+    border: 1px solid rgba(74, 144, 255, 0.18);
 }
 
 /* título */
 #detalhes-veiculo h2 {
     margin-bottom: 5px;
+    color: #4a90ff;
 }
 
 /* Modal */
@@ -61,7 +72,7 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(10, 19, 40, 0.65);
 }
 
 .modal.hidden {
@@ -74,11 +85,12 @@
     border-radius: 11px;
     width: 90%;
     max-width: 500px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(10, 19, 40, 0.12);
+    border: 1px solid rgba(74, 144, 255, 0.18);
 }
 
 .fechar {
-    color: #aaa;
+    color: #4a90ff;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -86,7 +98,7 @@
 }
 
 .fechar:hover {
-    color: #000;
+    color: #10213b;
 }
 
 #form-manutencao {
@@ -100,12 +112,12 @@
 #form-manutencao input {
     width: 100%;
     padding: 14px 18px;
-    border: 2px solid #e0e0e0;
+    border: 2px solid rgba(74, 144, 255, 0.22);
     border-radius: 6px;
     font-size: 14px;
     font-family: inherit;
     transition: all 0.3s ease;
-    background-color: #fafafa;
+    background-color: #ffffff;
     box-sizing: border-box;
 }
 
@@ -119,31 +131,31 @@
 
 #form-manutencao input:focus {
     outline: none;
-    border-color: #ff8c00;
+    border-color: #4a90ff;
     background-color: #fff;
-    box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.1);
+    box-shadow: 0 0 0 3px rgba(74, 144, 255, 0.12);
 }
 
 #form-manutencao textarea {
     grid-column: 1 / -1;
     width: 100%;
     padding: 12px 14px;
-    border: 2px solid #e0e0e0;
+    border: 2px solid rgba(74, 144, 255, 0.22);
     border-radius: 6px;
     font-size: 14px;
     font-family: inherit;
     resize: vertical;
     min-height: 100px;
     transition: all 0.3s ease;
-    background-color: #fafafa;
+    background-color: #ffffff;
     box-sizing: border-box;
 }
 
 #form-manutencao textarea:focus {
     outline: none;
-    border-color: #ff8c00;
+    border-color: #4a90ff;
     background-color: #fff;
-    box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.1);
+    box-shadow: 0 0 0 3px rgba(74, 144, 255, 0.12);
 }
 
 #form-manutencao input[type="date"]::-webkit-calendar-picker-indicator {
@@ -163,14 +175,14 @@
 .btn-salvar {
     grid-column: 1;
     width: 100%;
-    background: linear-gradient(90deg, #ff8c00, #d4af37);
+    background: linear-gradient(90deg, #4a90ff, #5e6dff);
     color: white;
 }
 
 .btn-salvar:hover {
-    background: linear-gradient(90deg, #d4af37, #ff8c00);
+    background: linear-gradient(90deg, #5e6dff, #4a90ff);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255, 140, 0, 0.3);
+    box-shadow: 0 4px 12px rgba(74, 144, 255, 0.25);
 }
 
 .btn-salvar:active {
@@ -180,15 +192,15 @@
 .btn-cancelar {
     grid-column: 2;
     width: 100%;
-    background-color: #f0f0f0;
-    color: #333;
-    border: 2px solid #e0e0e0;
+    background-color: #eef4ff;
+    color: #10213b;
+    border: 2px solid rgba(74, 144, 255, 0.22);
 }
 
 .btn-cancelar:hover {
-    background-color: #e0e0e0;
-    border-color: #999;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: #dbe9ff;
+    border-color: #4a90ff;
+    box-shadow: 0 2px 8px rgba(74, 144, 255, 0.15);
 }
 
 /* Responsivo */
@@ -262,9 +274,8 @@
 
 /* principal */
 #botoes button:first-child {
-    background-image: linear-gradient(90deg, #d4af37, #ff8c00);
-    background-color: #d4af37; /* fallback para compatibilidade */
-    color: black;
+    background-image: linear-gradient(90deg, #4a90ff, #5e6dff);
+    color: white;
     transition: background-image 0.3s ease;
     border: none;
     padding: 10px 20px;
@@ -272,18 +283,18 @@
 }
 
 #botoes button:first-child:hover {
-    background-image: linear-gradient(90deg, #ff8c00, #d4af37);
+    background-image: linear-gradient(90deg, #5e6dff, #4a90ff);
 }
 
 /* secundário */
 #botoes button:last-child {
-    background-color: #355c4b;
-    border: 2px solid #333333b9;
+    background-color: #5e6dff;
+    border: 2px solid rgba(74, 144, 255, 0.3);
     color: rgb(255, 255, 255);
 }
 
 #botoes button:last-child:hover {
-    background-color: #355c4b;
+    background-color: #4a90ff;
     color: rgb(255, 255, 255);
 }
 
@@ -300,7 +311,7 @@
 #lista-manutencoes h3 {
     font-size: 18px;
     margin-bottom: 20px;
-    color: #333;
+    color: #10213b;
 }
 
 .manutencoes-grid {
@@ -310,17 +321,17 @@
 }
 
 .card-manutencao {
-    background: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
-    border: 2px solid #e0e0e0;
+    background: linear-gradient(135deg, #eef5ff 0%, #f8fbff 100%);
+    border: 2px solid rgba(74, 144, 255, 0.18);
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px rgba(10, 19, 40, 0.08);
     transition: all 0.3s ease;
 }
 
 .card-manutencao:hover {
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-    border-color: #ff8c00;
+    box-shadow: 0 6px 16px rgba(10, 19, 40, 0.15);
+    border-color: #4a90ff;
     transform: translateY(-4px);
 }
 
@@ -330,25 +341,25 @@
     align-items: center;
     margin-bottom: 12px;
     padding-bottom: 10px;
-    border-bottom: 2px solid #e0e0e0;
+    border-bottom: 2px solid rgba(74, 144, 255, 0.18);
 }
 
 .card-manutencao h4 {
     margin: 0;
-    color: #333;
+    color: #10213b;
     font-size: 16px;
 }
 
 .data-manutencao {
     font-size: 12px;
-    color: #999;
-    background-color: #f0f0f0;
+    color: #4a90ff;
+    background-color: #eef4ff;
     padding: 4px 8px;
     border-radius: 4px;
 }
 
 .manutencao-descricao {
-    color: #555;
+    color: #334772;
     font-size: 13px;
     line-height: 1.5;
     margin-bottom: 12px;
@@ -360,18 +371,18 @@
 .card-manutencao p {
     margin: 8px 0;
     font-size: 13px;
-    color: #666;
+    color: #556085;
 }
 
 .card-manutencao strong {
-    color: #333;
+    color: #10213b;
 }
 
 .btn-deletar {
     width: 100%;
     margin-top: 15px;
     padding: 10px;
-    background-color: #ff6b6b;
+    background: linear-gradient(135deg, #4a90ff, #5e6dff);
     color: white;
     border: none;
     border-radius: 6px;
@@ -382,8 +393,8 @@
 }
 
 .btn-deletar:hover {
-    background-color: #ff5252;
-    box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+    background: linear-gradient(135deg, #5e6dff, #4a90ff);
+    box-shadow: 0 2px 8px rgba(74, 144, 255, 0.25);
 }
 
 .btn-deletar:active {
