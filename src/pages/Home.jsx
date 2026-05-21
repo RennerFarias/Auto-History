@@ -32,24 +32,6 @@ export default function Home() {
 
   return (
     <>
-      {/* BOTÃO MENU */}
-      <button
-        className={`menu-btn ${menuOpen ? 'active' : ''} ${menuDark && !menuOpen ? 'dark' : ''}`}
-        onClick={() => setMenuOpen(prev => !prev)}
-      >
-        <span />
-        <span />
-        <span />
-      </button>
-
-      {/* SIDEBAR */}
-      <aside className={`sidebar ${menuOpen ? 'open' : ''}`} aria-label="Navegação do site">
-        <h2>Menu</h2>
-        <a href="#hero" onClick={() => setMenuOpen(false)}>Início</a>
-        <a href="#recursos" onClick={() => setMenuOpen(false)}>Recursos</a>
-        <a href="#como-funciona" onClick={() => setMenuOpen(false)}>Como funciona</a>
-        <Link to="/login" onClick={() => setMenuOpen(false)}>Login</Link>
-      </aside>
 
       <main className="home-page">
         {/* HERO */}
@@ -60,7 +42,7 @@ export default function Home() {
           Relatórios completos do histórico do veículo.<br />
           Tome decisões seguras antes de comprar seu próximo veículo.
         </p>
-        <Link to="/login" className="hero-btn">Ver histórico</Link>
+        <Link to="/dashboard" className="hero-btn">Ver histórico</Link>
       </section>
 
       {/* RECURSOS */}

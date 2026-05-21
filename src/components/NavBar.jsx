@@ -29,7 +29,6 @@ export default function Navbar() {
 
             <nav className={`menu ${open ? 'active' : ''}`}>
                 <Link to="/" onClick={() => setOpen(false)}>Início</Link>
-                <Link to="/dashboard" onClick={() => setOpen(false)}>Painel</Link>
                 <Link to="/oficinas" onClick={() => setOpen(false)}>Oficinas Parceiras</Link>
                 <Link to="/sobre-nos" onClick={() => setOpen(false)}>Sobre nós</Link>
                 <Link to="/dashboard" id="abrir-login" onClick={() => setOpen(false)}>Entrar</Link>
