@@ -4,10 +4,13 @@ body {
     padding: 3rem 1rem;
     min-height: 100vh;
     background: linear-gradient(180deg, #eef5ff 0%, #f8fbff 45%, #ffffff 100%);
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .cont-principal {
     width: 100%;
+    max-width: 1300px;
     margin: 7rem auto;
     background-color: rgba(255, 255, 255, 0.78);
     backdrop-filter: blur(12px);
@@ -16,6 +19,7 @@ body {
     border: 1px solid rgba(74, 144, 255, 0.18);
     box-shadow: 0 10px 30px rgba(10, 19, 40, 0.12);
     background: linear-gradient(180deg, #eef5ff 0%, #f8fbff 45%, #ffffff 100%);
+    box-sizing: border-box;
 }
 
 .inicio {
@@ -25,59 +29,60 @@ body {
 
 .inicio h1 {
     color: #4a90ff;
-    font-size: 36px;
-    margin-bottom: 10px;
+    font-size: 42px;
+    margin-bottom: 15px;
 }
-.inicio p {
+
+.inicio > p {
     color: #10213b;
     font-size: 18px;
-    line-height: 1.6;
+    line-height: 1.7;
+    max-width: 850px;
+    margin: 0 auto;
 }
 
 .integrantes {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 25px;
     justify-content: center;
-    margin-top: 30px;
+    align-items: stretch;
+    margin-top: 40px;
 }
 
 .gaveta {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    flex: 1 1 300px;
+    max-width: 360px;
+    min-width: 260px;
     border-radius: 20px;
-    padding: 24px;
+    padding: 20px;
     box-shadow: 0 20px 60px rgba(10, 19, 40, 0.14);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    flex: 1 1 260px;
-    max-width: 520px;
-    min-width: 240px;
     background: linear-gradient(180deg, #0a1328 0%, #101f39 100%);
     border: 1px solid rgba(74, 144, 255, 0.15);
+    box-sizing: border-box;
 }
 
 .gaveta:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
     box-shadow: 0 24px 70px rgba(10, 19, 40, 0.18);
 }
 
 .integrante {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     width: 100%;
-    min-height: 200px;
-    height: 350px;
-    padding: 20px;
+    min-height: 320px;
+    padding: 24px;
     color: #eef5ff;
     text-decoration: none;
-    border-radius: 15px;
-    border: none;
+    border-radius: 16px;
     text-align: left;
     transition: background 0.3s ease, transform 0.3s ease;
     background: linear-gradient(135deg, #4a90ff, #5e6dff);
+    box-sizing: border-box;
 }
 
 .integrante:hover {
@@ -88,27 +93,108 @@ body {
 .integrante h2 {
     color: #eef5ff;
     margin-bottom: 10px;
+    font-size: 24px;
 }
 
 .integrante p {
     color: #eef5ff;
-    font-size: 18px;
-    line-height: 1.4;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 10px;
 }
 
 .redes-sociais {
     display: flex;
-    gap: 15px;
-    margin-top: 15px;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    margin-top: 20px;
 }
 
 .redes-sociais a {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    transition: 0.3s ease;
 }
+
+.redes-sociais a:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.25);
+}
+
 .redes-sociais img {
-    width: 100%;
-    height: 100%;
+    width: 22px;
+    height: 22px;
     object-fit: contain;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 1024px) {
+    .gaveta {
+        max-width: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 2rem 0.7rem;
+    }
+
+    .cont-principal {
+        padding: 1.5rem;
+        margin: 5rem auto;
+    }
+
+    .inicio h1 {
+        font-size: 32px;
+    }
+
+    .inicio > p {
+        font-size: 16px;
+    }
+
+    .integrantes {
+        gap: 20px;
+    }
+
+    .gaveta {
+        max-width: 100%;
+        min-width: 100%;
+    }
+
+    .integrante {
+        min-height: auto;
+    }
+
+    .integrante h2 {
+        font-size: 22px;
+    }
+
+    .integrante p {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .inicio h1 {
+        font-size: 28px;
+    }
+
+    .inicio > p {
+        font-size: 15px;
+    }
+
+    .integrante {
+        padding: 20px;
+    }
+
+    .redes-sociais {
+        gap: 12px;
+    }
 }

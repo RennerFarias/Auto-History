@@ -12,6 +12,7 @@ body {
   font-family: Inter, Arial, sans-serif;
   color: #0f172a;
   background: linear-gradient(180deg, #eef5ff 0%, #f8fbff 45%, #fff 100%);
+  overflow-x: hidden; /* CRÍTICO: Impede que o ganho de 100vw crie barra de rolagem horizontal */
 }
 
 .home-page {
@@ -21,12 +22,20 @@ body {
   background:
     radial-gradient(circle at top left, rgba(74,144,255,.12), transparent 28%),
     linear-gradient(180deg, #eef5ff 0%, #f8fbff 45%, #fff 100%);
+  overflow-x: hidden; /* Garante que nenhum container interno estoure a largura máxima */
 }
 
 /* ── HERO ── */
 .hero {
-  min-height: 100vh;
+  /* Altera a seção para vazar de ponta a ponta na janela gráfica */
+  width: 100vw;
   position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -114,7 +123,6 @@ body {
   max-width: 1160px;
   margin: 0 auto;
   background: transparent;
-
 }
 
 .secao-label {
@@ -184,6 +192,14 @@ body {
 
 /* ── COMO FUNCIONA ── */
 .como-funciona {
+  /* Altera a seção para vazar de ponta a ponta na janela gráfica e remover bordas brancas */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
   background: #edf3fc;
   padding: 96px 24px 120px;
   text-align: center;

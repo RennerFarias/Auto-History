@@ -32,53 +32,56 @@ export default function Home() {
 
   return (
     <>
-
       <main className="home-page">
-        {/* HERO */}
+        {/* HERO - SEÇÃO COMPLETA DE PONTA A PONTA */}
         <section id="hero" className="hero">
-        <p className="hero-etiqueta">Relatórios de histórico de veículos</p>
-        <h1>Todo carro tem <span>uma história.</span><br />Saiba disso.</h1>
-        <p className="hero-subtitulo">
-          Relatórios completos do histórico do veículo.<br />
-          Tome decisões seguras antes de comprar seu próximo veículo.
-        </p>
-        <Link to="/dashboard" className="hero-btn">Ver histórico</Link>
-      </section>
-
-      {/* RECURSOS */}
-      <section id="recursos" className="recursos">
-        <p className="secao-label">O que você recebe ao usar o nosso sistema</p>
-        <h2 className="secao-titulo">Tudo o que você precisa saber</h2>
-        {RECURSOS.map((r, i) => (
-          <div className="recurso-item" key={i}>
-            <div className="recurso-icone">{r.emoji}</div>
-            <div className="recurso-texto">
-              <h3>{r.titulo}</h3>
-              <p>{r.desc}</p>
-            </div>
+          <div className="hero-conteudo">
+            <p className="hero-etiqueta">Relatórios de histórico de veículos</p>
+            <h1>Todo carro tem <span>uma história.</span><br />Saiba disso.</h1>
+            <p className="hero-subtitulo">
+              Relatórios completos do histórico do veículo.<br />
+              Tome decisões seguras antes de comprar seu próximo veículo.
+            </p>
+            <Link to="/dashboard" className="hero-btn">Ver histórico</Link>
           </div>
-        ))}
-      </section>
+        </section>
 
-      {/* COMO FUNCIONA */}
-      <section id="como-funciona" className="como-funciona">
-        <p className="secao-label">Como funciona</p>
-        <h2 className="secao-titulo secao-titulo--simple">
-          Apenas três passos simples
-        </h2>
-        <h3>Entenda como todo nosso processo funciona de forma simples e eficaz</h3>
-        <div className="etapas-container">
-          {ETAPAS.map((e, i) => (
-            <div className="etapa" key={i}>
-              <div className="etapa-linha" />
-              <div className="etapa-circulo">{e.emoji}</div>
-              <p className="etapa-label">{e.label}</p>
-              <h3>{e.titulo}</h3>
-              <p>{e.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+        {/* RECURSOS */}
+        <section id="recursos" className="recursos">
+          <p className="secao-label">O que você recebe ao usar o nosso sistema</p>
+          <h2 className="secao-titulo">Tudo o que você precisa saber</h2>
+          <div className="recursos-grid">
+            {RECURSOS.map((r, i) => (
+              <div className="recurso-item" key={i}>
+                <div className="recurso-icone">{r.emoji}</div>
+                <div className="recurso-texto">
+                  <h3>{r.titulo}</h3>
+                  <p>{r.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* COMO FUNCIONA */}
+        <section id="como-funciona" className="como-funciona">
+          <p className="secao-label">Como funciona</p>
+          <h2 className="secao-titulo secao-titulo--simple">
+            Apenas três passos simples
+          </h2>
+          <h3>Entenda como todo nosso processo funciona de forma simples e eficaz</h3>
+          <div className="etapas-container">
+            {ETAPAS.map((e, i) => (
+              <div className="etapa" key={i}>
+                <div className="etapa-linha" />
+                <div className="etapa-circulo">{e.emoji}</div>
+                <p className="etapa-label">{e.label}</p>
+                <h3>{e.titulo}</h3>
+                <p>{e.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
       </main>
     </>
   )

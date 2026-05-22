@@ -423,3 +423,128 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* ==========================================================================
+   Ajustes de Correção do Modal de Nova Manutenção
+   ========================================================================== */
+
+
+.titulo-modal {
+  color: #222222 !important; 
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  margin-bottom: 24px !important;
+  text-align: left !important;
+  user-select: none !important;
+  outline: none !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+
+.titulo-modal:focus,
+.titulo-modal:active,
+.titulo-modal:focus-visible {
+  color: #222222 !important;
+  outline: none !important;
+}
+
+
+#form-manutencao {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  width: 100%;
+}
+
+#form-manutencao input,
+#form-manutencao textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+
+#form-manutencao textarea {
+  grid-column: span 2;
+  min-height: 100px;
+  resize: vertical;
+}
+
+
+#form-manutencao .btn-salvar {
+  grid-column: 1 / 2;
+  width: 100%;
+}
+
+#form-manutencao .btn-cancelar {
+  grid-column: 2 / 3;
+  width: 100%;
+}
+
+/* ==========================================================================
+   Ajustes de Correção do Modal de Nova Manutenção
+   ========================================================================== */
+
+/* Bloqueia a mudança de cor do título do Modal */
+.titulo-modal {
+  color: #222222 !important; /* Cor cinza escuro/preto bem definida */
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  margin-bottom: 24px !important;
+  text-align: left !important;
+  user-select: none !important;
+  outline: none !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Evita qualquer variação de cor ao clicar ou focar perto dele */
+.titulo-modal:focus,
+.titulo-modal:active,
+.titulo-modal:focus-visible {
+  color: #222222 !important;
+  outline: none !important;
+}
+
+/* Estruturação do formulário para evitar quebras de cliques */
+#form-manutencao {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Divide em duas colunas */
+  gap: 16px;
+  width: 100%;
+}
+
+/* Estilização padrão para inputs e textareas dentro do modal */
+#form-manutencao input,
+#form-manutencao textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* Elementos que devem ocupar a linha inteira */
+#form-manutencao textarea {
+  grid-column: span 2;
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Inversão dos botões: Cancelar na Esquerda, Salvar na Direita */
+#form-manutencao .btn-cancelar {
+  grid-column: 1 / 2; /* Coluna 1 */
+  width: 100%;
+}
+
+#form-manutencao .btn-salvar {
+  grid-column: 2 / 3; /* Coluna 2 */
+  width: 100%;
+}

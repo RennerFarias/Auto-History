@@ -107,7 +107,7 @@ export default function Veiculo() {
             {modalAberto && (
                 <div className="modal">
                     <div className="modal-conteudo">
-                        <h2>Nova Manutenção</h2>
+                        <h2 className="titulo-modal">Nova Manutenção</h2>
                         <form id="form-manutencao" onSubmit={salvarManutencao}>
                             <input type="text" placeholder="Tipo de Manutenção" value={form.tipo} onChange={e => setForm({...form, tipo: e.target.value})} required />
                             <input type="number" placeholder="Quilometragem" value={form.quilometragem} onChange={e => setForm({...form, quilometragem: e.target.value})} required />
@@ -115,8 +115,8 @@ export default function Veiculo() {
                             <input type="date" value={form.data} onChange={e => setForm({...form, data: e.target.value})} required />
                             <input type="number" placeholder="Custo (opcional)" step="0.01" value={form.custo} onChange={e => setForm({...form, custo: e.target.value})} />
                             <textarea placeholder="Descreva a manutenção" value={form.descricao} onChange={e => setForm({...form, descricao: e.target.value})} required></textarea>
-                            <button type="submit" className="btn-salvar">Salvar</button>
                             <button type="button" className="btn-cancelar" onClick={() => setModalAberto(false)}>Cancelar</button>
+                            <button type="submit" className="btn-salvar">Salvar</button>
                         </form>
                     </div>
                 </div>
