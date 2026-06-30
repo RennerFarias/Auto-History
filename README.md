@@ -4,7 +4,7 @@
 
 ## 👥 Integrantes do grupo
 
-- Arthur Melo
+- Artur Melo
 - Elian Barros
 - Igor Morais
 - Rafael Barbosa
