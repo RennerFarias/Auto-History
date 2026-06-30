@@ -1,62 +1,78 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import * as veiculoService from '../services/veiculoService';
+import * as manutencaoService from '../services/manutencaoService';
 import gerarPDF from '../utils/gerarPdf';
 import '../assets/css/veiculo.css';
 
 export default function Veiculo() {
     const { id } = useParams();
     const navigate = useNavigate();
+    const { estaLogado, carregando: carregandoAuth } = useAuth();
+
     const [veiculo, setVeiculo] = useState(null);
+    const [historico, setHistorico] = useState([]);
+    const [erro, setErro] = useState("");
     const [modalAberto, setModalAberto] = useState(false);
-    const [form, setForm] = useState({ tipo: '', quilometragem: '', oficina: '', data: '', custo: '', descricao: '' });
+    const formVazio = { tipo: '', quilometragem: '', oficina: '', data: '', custo: '', descricao: '' };
+    const [form, setForm] = useState(formVazio);
 
     useEffect(() => {
-        const usuario = JSON.parse(localStorage.getItem("usuario"));
-        if (!usuario) return navigate("/dashboard");
-
-        const chave = `veiculos_${usuario.email}`;
-        const veiculos = JSON.parse(localStorage.getItem(chave)) || [];
-        const v = veiculos[Number(id)];
-
-        if (!v) {
-            alert("Veículo não encontrado");
-            return navigate("/dashboard");
+        if (carregandoAuth) return;
+        if (!estaLogado) {
+            navigate("/dashboard");
+            return;
         }
+        carregarDados();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [id, carregandoAuth, estaLogado]);
 
-        if (!v.historico) v.historico = [];
-        setVeiculo(v);
-        document.title = `${v.modelo} - ${v.marca}`;
-    }, [id, navigate]);
+    async function carregarDados() {
+        try {
+            const [v, h] = await Promise.all([
+                veiculoService.obterVeiculo(id),
+                manutencaoService.listarManutencoes(id),
+            ]);
+            setVeiculo(v);
+            setHistorico(h);
+            document.title = `${v.modelo} - ${v.marca}`;
+        } catch (err) {
+            setErro(err.message);
+        }
+    }
 
-    const salvarManutencao = (e) => {
+    async function salvarManutencao(e) {
         e.preventDefault();
-        const usuario = JSON.parse(localStorage.getItem("usuario"));
-        const chave = `veiculos_${usuario.email}`;
-        const veiculos = JSON.parse(localStorage.getItem(chave)) || [];
-        
-        veiculo.historico.push(form);
-        veiculos[Number(id)] = veiculo;
-        
-        localStorage.setItem(chave, JSON.stringify(veiculos));
-        setVeiculo({ ...veiculo }); // Força re-render
-        setModalAberto(false);
-        setForm({ tipo: '', quilometragem: '', oficina: '', data: '', custo: '', descricao: '' });
-        alert("Manutenção registrada!");
-    };
-
-    const deletarManutencao = (index) => {
-        if (window.confirm("Deseja deletar esta manutenção?")) {
-            const usuario = JSON.parse(localStorage.getItem("usuario"));
-            const chave = `veiculos_${usuario.email}`;
-            const veiculos = JSON.parse(localStorage.getItem(chave)) || [];
-            
-            veiculo.historico.splice(index, 1);
-            veiculos[Number(id)] = veiculo;
-            
-            localStorage.setItem(chave, JSON.stringify(veiculos));
-            setVeiculo({ ...veiculo });
+        try {
+            await manutencaoService.criarManutencao(id, form);
+            const h = await manutencaoService.listarManutencoes(id);
+            setHistorico(h);
+            setModalAberto(false);
+            setForm(formVazio);
+        } catch (err) {
+            alert(err.message);
         }
-    };
+    }
+
+    async function deletarManutencao(manutencaoId) {
+        if (!window.confirm("Deseja deletar esta manutenção?")) return;
+        try {
+            await manutencaoService.excluirManutencao(manutencaoId);
+            setHistorico((atual) => atual.filter((m) => m._id !== manutencaoId));
+        } catch (err) {
+            alert(err.message);
+        }
+    }
+
+    if (erro) {
+        return (
+            <div id="pagina-veiculo">
+                <p style={{ textAlign: 'center', marginTop: '120px', color: '#e53935' }}>{erro}</p>
+                <p style={{ textAlign: 'center' }}><Link to="/dashboard">← Voltar para Meus veículos</Link></p>
+            </div>
+        );
+    }
 
     if (!veiculo) return <div id="pagina-veiculo">Carregando...</div>;
 
@@ -66,7 +82,7 @@ export default function Veiculo() {
                 <div id="container-1">
                     <button><Link className="retornar_veiculos" to="/dashboard">← Meus veículos</Link></button>
                 </div>
-                
+
                 <div id="detalhes-veiculo">
                     <h2>{veiculo.modelo} {veiculo.marca}</h2>
                     <p>{veiculo.ano} • {veiculo.cor} • {veiculo.km} km</p>
@@ -82,21 +98,21 @@ export default function Veiculo() {
 
                 <div id="lista-manutencoes">
                     <h3>Histórico de Manutenções</h3>
-                    {veiculo.historico.length === 0 ? (
+                    {historico.length === 0 ? (
                         <p style={{ textAlign: 'center', color: '#999', marginTop: '20px' }}>Nenhuma manutenção registrada</p>
                     ) : (
                         <div className="manutencoes-grid">
-                            {veiculo.historico.map((manutencao, index) => (
-                                <div className="card-manutencao" key={index}>
+                            {historico.map((manutencao) => (
+                                <div className="card-manutencao" key={manutencao._id}>
                                     <div className="manutencao-header">
                                         <h4>{manutencao.tipo}</h4>
                                         <span className="data-manutencao">{new Date(manutencao.data).toLocaleDateString("pt-BR")}</span>
                                     </div>
                                     <p className="manutencao-descricao">{manutencao.descricao}</p>
-                                    {manutencao.quilometragem && <p><strong>KM:</strong> {manutencao.quilometragem}</p>}
+                                    {manutencao.quilometragem ? <p><strong>KM:</strong> {manutencao.quilometragem}</p> : null}
                                     {manutencao.oficina && <p><strong>Oficina:</strong> {manutencao.oficina}</p>}
-                                    {manutencao.custo && <p><strong>Custo:</strong> R$ {parseFloat(manutencao.custo).toFixed(2)}</p>}
-                                    <button className="btn-deletar" onClick={() => deletarManutencao(index)}>Deletar</button>
+                                    {manutencao.custo ? <p><strong>Custo:</strong> R$ {parseFloat(manutencao.custo).toFixed(2)}</p> : null}
+                                    <button className="btn-deletar" onClick={() => deletarManutencao(manutencao._id)}>Deletar</button>
                                 </div>
                             ))}
                         </div>
@@ -114,7 +130,7 @@ export default function Veiculo() {
                             <input type="text" placeholder="Oficina" value={form.oficina} onChange={e => setForm({...form, oficina: e.target.value})} required />
                             <input type="date" value={form.data} onChange={e => setForm({...form, data: e.target.value})} required />
                             <input type="number" placeholder="Custo (opcional)" step="0.01" value={form.custo} onChange={e => setForm({...form, custo: e.target.value})} />
-                            <textarea placeholder="Descreva a manutenção" value={form.descricao} onChange={e => setForm({...form, descricao: e.target.value})} required></textarea>
+                            <textarea placeholder="Descreva a manutenção" value={form.descricao} onChange={e => setForm({...form, descricao: e.target.value})}></textarea>
                             <button type="button" className="btn-cancelar" onClick={() => setModalAberto(false)}>Cancelar</button>
                             <button type="submit" className="btn-salvar">Salvar</button>
                         </form>
